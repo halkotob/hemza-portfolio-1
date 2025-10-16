@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hemza Alkotob — Film & CS Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Hemza Alkotob</h1>
+      <nav>
+        <a href="#film">Film</a>
+        <a href="#cs">CS</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <h2>Film + Computer Science</h2>
+        <p>A short intro sentence about your voice and what you do.</p>
+      </div>
+    </section>
+
+    <section id="film" class="projects container">
+      <h3>Film</h3>
+      <div class="grid">
+        <article class="card">
+          <img src="assets/thumb-film1.jpg" alt="Film thumbnail">
+          <h4>Short Film Title</h4>
+          <p>Role — Director / Editor • Year</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cs" class="projects container">
+      <h3>Computer-Science Projects</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Project Name</h4>
+          <p>Short description and link to repo or demo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <h3>About</h3>
+      <p>A paragraph about you: degrees, tools you use, what you want.</p>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Hemza Alkotob</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
