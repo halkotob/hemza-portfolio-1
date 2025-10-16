@@ -1,68 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hemza Alkotob — Film & CS Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hemza Alkotob | Screenwriter & Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="brand">Hemza Alkotob</h1>
-      <nav>
-        <a href="#film">Film</a>
-        <a href="#cs">CS</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <header>
+    <div class="logo">Hemza Alkotob</div>
+    <nav>
+      <a href="#films">Films</a>
+      <a href="#code">Code</a>
+      <a href="#contact-section">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <section id="hero" class="hero">
-      <div class="container">
-        <h2>Film + Computer Science</h2>
-        <p>A short intro sentence about your voice and what you do.</p>
+    <section class="hero">
+      <h1>Stories Through Code & Cinema</h1>
+      <p>Exploring creativity at the intersection of storytelling and technology.</p>
+    </section>
+
+    <!-- Split Section for Films and Code -->
+    <section class="split-container">
+      <div class="split-panel" id="films">
+        <div class="split-content">
+          <h2>Film & Scripts</h2>
+          <p>A collection of screenplays and cinematic projects.</p>
+          <a href="films.html" class="btn">View Projects</a>
+        </div>
+      </div>
+      <div class="split-panel" id="code">
+        <div class="split-content">
+          <h2>Code & Software</h2>
+          <p>A showcase of software engineering and creative code.</p>
+          <a href="code.html" class="btn">Explore Repos</a>
+        </div>
       </div>
     </section>
 
-    <section id="film" class="projects container">
-      <h3>Film</h3>
-      <div class="grid">
-        <article class="card">
-          <img src="assets/thumb-film1.jpg" alt="Film thumbnail">
-          <h4>Short Film Title</h4>
-          <p>Role — Director / Editor • Year</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="cs" class="projects container">
-      <h3>Computer-Science Projects</h3>
-      <div class="grid">
-        <article class="card">
-          <h4>Project Name</h4>
-          <p>Short description and link to repo or demo.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="about" class="about container">
-      <h3>About</h3>
-      <p>A paragraph about you: degrees, tools you use, what you want.</p>
-    </section>
-
-    <section id="contact" class="contact container">
-      <h3>Contact</h3>
-      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <section id="contact-section" class="contact-section">
+      <h2>Get In Touch</h2>
+      <p>Have a project in mind or just want to connect? I'd love to hear from you.</p>
+      <a href="mailto:your-email@example.com" class="btn">Say Hello</a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Hemza Alkotob</div>
+  <footer>
+    <p>© 2025 Hemza Alkotob</p>
   </footer>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
