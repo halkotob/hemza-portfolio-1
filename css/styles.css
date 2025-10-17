@@ -182,9 +182,15 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+.film-library-page .page-content {
+  max-width: 1200px;
+}
+
 .script-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
+  justify-content: flex-start;
 }
 
 .script-card {
@@ -196,6 +202,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   transition: border-color 0.3s, transform 0.3s;
+  flex: 1 1 30%;
 }
 
 .script-card:hover {
@@ -220,4 +227,69 @@ footer {
 
 .script-btn {
   align-self: flex-start;
+}
+
+/* --- PDF Modal --- */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+.modal-content {
+  position: relative;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 20px;
+  width: 90%;
+  max-width: 1000px;
+  height: 90%;
+  background-color: #1F2937;
+  border-radius: 8px;
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #D97706;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #374151;
+}
+
+.open-new-tab-button {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 60px; /* Position it to the left of the close button */
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.open-new-tab-button:hover,
+.open-new-tab-button:focus {
+  color: #D97706;
+  text-decoration: none;
+  cursor: pointer;
 }
