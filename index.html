@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hemza Alkotob | Screenwriter & Engineer</title>
   <meta name="description" content="Hemza Alkotob — screenwriter and software engineer. Read feature and TV pilot scripts, and explore code projects.">
-  <!-- TODO: update these URLs if the site is hosted somewhere other than GitHub Pages -->
+  <!-- TODO: update these URLs if the site moves to a custom domain -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Hemza Alkotob | Screenwriter & Engineer">
   <meta property="og:description" content="Stories through code & cinema. Screenplays, TV pilots, and software projects.">
@@ -25,16 +25,22 @@
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
     <nav id="site-nav">
       <a href="#about">About</a>
-      <a href="#films">Films</a>
-      <a href="#code">Code</a>
+      <a href="code.html">Technical</a>
+      <a href="films.html">Creative</a>
       <a href="#contact-section">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <h1>Stories Through Code & Cinema</h1>
-      <p>Exploring creativity at the intersection of storytelling and technology.</p>
+      <div class="hero-star" aria-hidden="true"></div>
+      <h1 class="greeting">
+        <span class="sr-only">Hello!</span>
+        <!-- Cycles through the greetings listed in data-words (see script.js) -->
+        <span aria-hidden="true"><span class="typed" data-words='["Hello!", "Salam!", "Marhaba!", "Welcome"]'>Hello!</span><span class="cursor"></span></span>
+      </h1>
+      <p class="hero-intro">I'm <strong>Hemza Alkotob</strong>, a screenwriter, engineer, and storyteller.</p>
+      <a href="#about" class="scroll-cue">About me <span class="arrow" aria-hidden="true">&darr;</span></a>
     </section>
 
     <section id="about" class="about-section">
@@ -47,21 +53,34 @@
       </div>
     </section>
 
-    <!-- Split Section for Films and Code -->
-    <section class="split-container">
-      <div class="split-panel" id="films">
-        <div class="split-content">
-          <h2>Film & Scripts</h2>
-          <p>A collection of screenplays and cinematic projects.</p>
-          <a href="films.html" class="btn">View Projects</a>
-        </div>
-      </div>
-      <div class="split-panel" id="code">
-        <div class="split-content">
-          <h2>Code & Software</h2>
-          <p>A showcase of software engineering and creative code.</p>
-          <a href="code.html" class="btn">Explore Repos</a>
-        </div>
+    <div class="ornament" aria-hidden="true"><span></span></div>
+
+    <!-- Two paths: Technical and Creative -->
+    <section id="paths" class="paths" aria-labelledby="paths-heading">
+      <h2 id="paths-heading" class="section-heading">Choose a Path</h2>
+      <div class="split-container">
+        <a href="code.html" class="split-panel technical">
+          <div class="panel-preview window" aria-hidden="true">
+            <div class="window-bar"><i></i><i></i><i></i><em>halkotob.github.io/IslamDunk</em></div>
+            <img src="images/projects/islamdunk.jpg" alt="">
+          </div>
+          <div class="split-content">
+            <h2>Technical Projects</h2>
+            <p>Games, tools, and creative code.</p>
+            <span class="btn">Explore Code</span>
+          </div>
+        </a>
+        <a href="films.html" class="split-panel creative">
+          <div class="panel-preview pages" aria-hidden="true">
+            <img src="images/scripts/the-squared-circle-pilot-title.jpg" alt="">
+            <img src="images/scripts/chivalrys-not-dead-title.jpg" alt="">
+          </div>
+          <div class="split-content">
+            <h2>Creative Projects</h2>
+            <p>Feature screenplays and TV pilots.</p>
+            <span class="btn">Read Scripts</span>
+          </div>
+        </a>
       </div>
     </section>
 

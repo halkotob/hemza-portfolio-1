@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Film & Scripts | Hemza Alkotob</title>
+  <title>Creative Projects | Hemza Alkotob</title>
   <meta name="description" content="Feature screenplays and TV pilots by Hemza Alkotob. Read the scripts online.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Film & Scripts | Hemza Alkotob">
+  <meta property="og:title" content="Creative Projects | Hemza Alkotob">
   <meta property="og:description" content="Feature screenplays and TV pilots by Hemza Alkotob.">
   <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/films.html">
   <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/films.jpg">
@@ -18,56 +18,93 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="cinematic">
   <header>
     <div class="logo"><a href="index.html">Hemza Alkotob</a></div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
     <nav id="site-nav">
       <a href="index.html#about">About</a>
-      <a href="films.html" aria-current="page">Films</a>
-      <a href="code.html">Code</a>
+      <a href="code.html">Technical</a>
+      <a href="films.html" aria-current="page">Creative</a>
       <a href="index.html#contact-section">Contact</a>
     </nav>
   </header>
 
   <main class="page-content">
     <div class="library-header">
-      <h1>Film & Scripts</h1>
-      <p>A collection of screenplays and cinematic projects. Click to read.</p>
+      <p class="slugline">FADE IN:</p>
+      <h1>Creative Projects</h1>
+      <p>Feature screenplays and TV pilots. Start with the first ten pages, or read the whole thing.</p>
     </div>
 
-    <div class="card-grid">
-      <!-- Script card: repeat this block for each script.
-           Optional: add <p class="card-accolade">★ Quarterfinalist, Some Festival 2025</p> under the logline. -->
-      <article class="card">
-        <div class="card-info">
-          <h2 class="card-title">Chivalry's Not Dead</h2>
-          <p class="card-meta">Feature Film | Adventure, Fantasy | 97 pages</p>
-          <p class="card-logline">After Alex is thrown back into the foster system, she accidentally summons a Knight from out of time and the pair struggle to find a way to send him home.</p>
+    <div class="script-list">
+      <!-- Script entry: repeat this block for each script.
+           - Title page image: images/scripts/NAME-title.jpg
+           - Excerpt: pdfs/NAME-first-10.pdf (pages 2-11, skipping the title page)
+           - Optional: add <p class="card-accolade">★ Quarterfinalist, Some Festival 2025</p> under the details. -->
+      <article class="card script-card">
+        <a href="pdfs/chivalrys-not-dead-first-10.pdf" class="title-page script-btn" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/scripts/chivalrys-not-dead-title.jpg" alt="">
+        </a>
+        <div class="card-body">
+          <div class="card-info">
+            <h2 class="card-title">Chivalry's Not Dead</h2>
+            <p class="card-meta">Feature Film | Adventure, Fantasy | 97 pages</p>
+            <p class="card-logline">After Alex is thrown back into the foster system, she accidentally summons a Knight from out of time and the pair struggle to find a way to send him home.</p>
+            <dl class="script-details">
+              <dt>Comps</dt>
+              <dd><cite>Hunt for the Wilderpeople</cite> meets <cite>Kate &amp; Leopold</cite></dd>
+            </dl>
+          </div>
+          <div class="card-actions">
+            <a href="pdfs/chivalrys-not-dead-first-10.pdf" class="btn script-btn" target="_blank" rel="noopener">Read First 10 Pages</a>
+            <a href="pdfs/chivalrys-not-dead.pdf" class="btn btn-secondary script-btn" target="_blank" rel="noopener">Full Script</a>
+          </div>
         </div>
-        <a href="pdfs/chivalrys-not-dead.pdf" class="btn script-btn" target="_blank" rel="noopener">Read Script</a>
       </article>
 
-      <article class="card">
-        <div class="card-info">
-          <h2 class="card-title">The Squared Circle - 'Entertainment'</h2>
-          <p class="card-meta">TV Pilot | Comedy, 30-Minute | 26 pages</p>
-          <p class="card-logline">When Freddie - a struggling college-educated screenwriter - gets his big break with the WWE, he has to find the art in the absurd world of professional wrestling.</p>
+      <article class="card script-card">
+        <a href="pdfs/the-squared-circle-pilot-first-10.pdf" class="title-page script-btn" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/scripts/the-squared-circle-pilot-title.jpg" alt="">
+        </a>
+        <div class="card-body">
+          <div class="card-info">
+            <h2 class="card-title">The Squared Circle - 'Entertainment'</h2>
+            <p class="card-meta">TV Pilot | Comedy, 30-Minute | 26 pages</p>
+            <p class="card-logline">When Freddie - a struggling college-educated screenwriter - gets his big break with the WWE, he has to find the art in the absurd world of professional wrestling.</p>
+            <dl class="script-details">
+              <dt>Comps</dt>
+              <dd><cite>30 Rock</cite> meets <cite>GLOW</cite></dd>
+            </dl>
+          </div>
+          <div class="card-actions">
+            <a href="pdfs/the-squared-circle-pilot-first-10.pdf" class="btn script-btn" target="_blank" rel="noopener">Read First 10 Pages</a>
+            <a href="pdfs/the-squared-circle-pilot.pdf" class="btn btn-secondary script-btn" target="_blank" rel="noopener">Full Script</a>
+          </div>
         </div>
-        <a href="pdfs/the-squared-circle-pilot.pdf" class="btn script-btn" target="_blank" rel="noopener">Read Script</a>
       </article>
 
-      <!-- TODO: re-enable once the script PDF is added (e.g. pdfs/the-last-scribe.pdf)
-      <article class="card">
-        <div class="card-info">
-          <h2 class="card-title">The Last Scribe</h2>
-          <p class="card-meta">TV Pilot | Fantasy, Drama</p>
-          <p class="card-logline">In a kingdom where writing is forbidden, a young woman secretly preserves her people's history, risking everything to keep their stories alive.</p>
+      <!-- TODO: re-enable once the script PDF, excerpt, and title page image are added
+      <article class="card script-card">
+        <a href="pdfs/the-last-scribe-first-10.pdf" class="title-page script-btn" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/scripts/the-last-scribe-title.jpg" alt="">
+        </a>
+        <div class="card-body">
+          <div class="card-info">
+            <h2 class="card-title">The Last Scribe</h2>
+            <p class="card-meta">TV Pilot | Fantasy, Drama</p>
+            <p class="card-logline">In a kingdom where writing is forbidden, a young woman secretly preserves her people's history, risking everything to keep their stories alive.</p>
+          </div>
+          <div class="card-actions">
+            <a href="pdfs/the-last-scribe-first-10.pdf" class="btn script-btn" target="_blank" rel="noopener">Read First 10 Pages</a>
+            <a href="pdfs/the-last-scribe.pdf" class="btn btn-secondary script-btn" target="_blank" rel="noopener">Full Script</a>
+          </div>
         </div>
-        <a href="pdfs/the-last-scribe.pdf" class="btn script-btn" target="_blank" rel="noopener">Read Script</a>
       </article>
       -->
     </div>
+
+    <p class="fade-out">FADE OUT.</p>
   </main>
 
   <footer>

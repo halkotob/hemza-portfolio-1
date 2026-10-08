@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code & Software | Hemza Alkotob</title>
+  <title>Technical Projects | Hemza Alkotob</title>
   <meta name="description" content="Software projects by Hemza Alkotob: games, tools, and creative code.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Code & Software | Hemza Alkotob">
+  <meta property="og:title" content="Technical Projects | Hemza Alkotob">
   <meta property="og:description" content="Games, tools, and creative code by Hemza Alkotob.">
   <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/code.html">
-  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/code.jpg">
+  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/projects/islamdunk.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,61 +24,100 @@
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
     <nav id="site-nav">
       <a href="index.html#about">About</a>
-      <a href="films.html">Films</a>
-      <a href="code.html" aria-current="page">Code</a>
+      <a href="code.html" aria-current="page">Technical</a>
+      <a href="films.html">Creative</a>
       <a href="index.html#contact-section">Contact</a>
     </nav>
   </header>
 
   <main class="page-content">
     <div class="library-header">
-      <h1>Code & Software</h1>
+      <h1>Technical Projects</h1>
       <p>Games, tools, and creative code.</p>
     </div>
 
     <div class="card-grid">
       <!-- Project card: repeat this block for each project.
-           Add a "Live Demo" link next to the GitHub one if a project is hosted. -->
+           Preview: either a screenshot in a .window (like IslamDunk) or a code/terminal
+           snippet (like the Python projects). To use your own photo, put it in
+           images/projects/ and swap the <pre> for <img src="images/projects/NAME.jpg" alt="">. -->
       <article class="card">
-        <div class="card-info">
-          <h2 class="card-title">IslamDunk</h2>
-          <p class="card-meta">Game | 2026</p>
-          <p class="card-logline">An Islamic-inspired arcade basketball game.</p>
-          <ul class="tag-list" aria-label="Tech stack">
-            <li>JavaScript</li>
-          </ul>
-        </div>
-        <div class="card-actions">
-          <a href="https://github.com/halkotob/IslamDunk" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="https://halkotob.github.io/IslamDunk/" class="card-preview" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <div class="window">
+            <div class="window-bar"><i></i><i></i><i></i><em>halkotob.github.io/IslamDunk</em></div>
+            <img src="images/projects/islamdunk.jpg" alt="">
+          </div>
+        </a>
+        <div class="card-body">
+          <div class="card-info">
+            <h2 class="card-title">IslamDunk</h2>
+            <p class="card-meta">Browser Game | 2026</p>
+            <p class="card-logline">An Islamic-inspired arcade basketball game, playable right in your browser.</p>
+            <ul class="tag-list" aria-label="Tech stack">
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div class="card-actions">
+            <a href="https://halkotob.github.io/IslamDunk/" class="btn" target="_blank" rel="noopener">Play Now</a>
+            <a href="https://github.com/halkotob/IslamDunk" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-info">
-          <h2 class="card-title">SuperPy</h2>
-          <p class="card-meta">Game | 2023</p>
-          <p class="card-logline">A small game project built with Pygame.</p>
-          <ul class="tag-list" aria-label="Tech stack">
-            <li>Python</li>
-            <li>Pygame</li>
-          </ul>
+        <div class="card-preview" aria-hidden="true">
+          <div class="window">
+            <div class="window-bar"><i></i><i></i><i></i><em>own.py</em></div>
+<pre><code><span class="tok-k">def</span> <span class="tok-f">fire_laser</span>(x, y):
+    <span class="tok-k">global</span> laser_state
+    laser_state = <span class="tok-s">"fire"</span>
+    screen.blit(laser_img, (x + <span class="tok-n">16</span>, y + <span class="tok-n">10</span>))
+
+
+<span class="tok-k">def</span> <span class="tok-f">hero</span>(x, y):
+    screen.blit(Hero_img, (x, y))</code></pre>
+          </div>
         </div>
-        <div class="card-actions">
-          <a href="https://github.com/halkotob/SuperPy" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+        <div class="card-body">
+          <div class="card-info">
+            <h2 class="card-title">SuperPy</h2>
+            <p class="card-meta">Desktop Game | 2023</p>
+            <p class="card-logline">A side-scrolling Pygame shooter: blast incoming comets with your hero's laser and rack up points.</p>
+            <ul class="tag-list" aria-label="Tech stack">
+              <li>Python</li>
+              <li>Pygame</li>
+            </ul>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/halkotob/SuperPy" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-info">
-          <h2 class="card-title">Watto's Junkyard</h2>
-          <p class="card-meta">Text Game | 2023</p>
-          <p class="card-logline">A short, Star Wars-themed Mad Libs game.</p>
-          <ul class="tag-list" aria-label="Tech stack">
-            <li>Python</li>
-          </ul>
+        <div class="card-preview" aria-hidden="true">
+          <div class="window">
+            <div class="window-bar"><i></i><i></i><i></i><em>Terminal</em></div>
+<pre><code><span class="tok-p">$</span> python "Watto Mad Libs.py"
+Enter a verb ending in ing: <span class="tok-s">podracing</span>
+Now choose a regular noun: <span class="tok-s">banana</span>
+<span class="tok-dim">...</span>
+Presenting: Watto's Junk Shop
+If you're <span class="tok-s">podracing</span> in the Outer Rim Territories and you need spare <span class="tok-s">hyperdrives</span> for your space-<span class="tok-s">banana</span>...</code></pre>
+          </div>
         </div>
-        <div class="card-actions">
-          <a href="https://github.com/halkotob/Wattos-Junkyard" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+        <div class="card-body">
+          <div class="card-info">
+            <h2 class="card-title">Watto's Junkyard</h2>
+            <p class="card-meta">Terminal Game | 2023</p>
+            <p class="card-logline">A short, Star Wars-themed Mad Libs game that turns your words into a tour of Watto's Junk Shop.</p>
+            <ul class="tag-list" aria-label="Tech stack">
+              <li>Python</li>
+            </ul>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/halkotob/Wattos-Junkyard" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
         </div>
       </article>
     </div>
