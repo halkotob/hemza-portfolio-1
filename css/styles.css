@@ -1,3 +1,17 @@
+:root {
+  --bg: #111827;            /* Dark blue-gray background */
+  --surface: #1F2937;
+  --border: #374151;
+  --text: #E5E7EB;          /* Light gray text for readability */
+  --text-strong: #f3f4f6;
+  --muted: #9CA3AF;
+  --accent: #D97706;
+  --accent-hover: #f59e0b;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Courier Prime', monospace;
+  --header-height: 5rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -9,33 +23,55 @@ html {
 }
 
 body {
-  font-family: 'Courier Prime', monospace;
-  background-color: #111827; /* Dark blue-gray background */
-  color: #E5E7EB; /* Light gray text for readability */
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+body > main {
+  flex: 1;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* --- Header & Nav --- */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%; /* Use percentage for responsive padding */
-  border-bottom: 1px solid #374151; /* Darker border */
-  background-color: rgba(17, 24, 39, 0.8); /* Semi-transparent dark background */
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(17, 24, 39, 0.85); /* Semi-transparent dark background */
+  backdrop-filter: blur(6px);
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-/* Make logo a link on subpages */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .logo a {
   color: inherit;
   text-decoration: none;
-}
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
 }
 
 nav a {
@@ -45,33 +81,88 @@ nav a {
   transition: color 0.3s;
 }
 
-nav a:hover {
-  color: #D97706; /* New accent color */
+nav a:hover,
+nav a[aria-current="page"] {
+  color: var(--accent);
 }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+/* --- Hero --- */
 .hero {
   text-align: center;
   padding: 8rem 2rem;
-  /* Cinematic background image with a dark overlay for text contrast */
-  background: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.7)), url(https://images.unsplash.com/photo-1517604931442-7e0c8ed2963e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Creates a cool parallax effect on scroll */
+  /* CSS-only "projector light" background, so there's no external image to break */
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(217, 119, 6, 0.28), transparent 60%),
+    radial-gradient(ellipse at 15% 100%, rgba(59, 130, 246, 0.15), transparent 55%),
+    linear-gradient(180deg, #0b1020 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
   font-weight: 700;
+  line-height: 1.2;
   margin-bottom: 1rem;
   color: #fff;
 }
 
 .hero p {
   font-size: 1.1rem;
-  color: #E5E7EB;
   max-width: 600px; /* Constrain line length for readability */
   margin: 0 auto;
+}
+
+/* --- About Section --- */
+.about-section {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 5%;
+}
+
+.about-photo {
+  flex: 0 0 200px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit: cover;
+}
+
+/* Initials shown until a real headshot is added */
+.about-photo.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface);
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--accent);
+}
+
+.about-text h2 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-text p + p {
+  margin-top: 1rem;
 }
 
 /* --- Split Panel Section --- */
@@ -95,12 +186,12 @@ nav a:hover {
 
 /* Individual backgrounds with overlays */
 #films {
-  background-image: linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url(https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1759&q=80);
+  background-image: linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url(../images/films.jpg);
 }
 
 #code {
-  background-image: linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url(https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);
-  border-left: 2px solid #374151;
+  background-image: linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url(../images/code.jpg);
+  border-left: 2px solid var(--border);
 }
 
 .split-panel:hover {
@@ -113,183 +204,359 @@ nav a:hover {
 }
 
 .split-content h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
+/* --- Buttons --- */
 .btn {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.8rem 2rem;
-  background-color: #D97706;
-  color: #111827;
+  background-color: var(--accent);
+  color: var(--bg);
   text-decoration: none;
-  font-family: 'Courier Prime', monospace;
+  font-family: var(--font-body);
   font-weight: bold;
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
-  background-color: #f59e0b; /* Lighter orange on hover */
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* --- Contact Section --- */
 .contact-section {
   text-align: center;
   padding: 6rem 2rem;
-  background-color: #1F2937;
+  background-color: var(--surface);
 }
 
 .contact-section h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.social-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+}
+
+/* --- Footer --- */
 footer {
   text-align: center;
   padding: 2rem 0;
   font-size: 0.9rem;
-  color: #9CA3AF;
-  background-color: #111827;
-  border-top: 1px solid #374151;
+  color: var(--muted);
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
 }
 
 /* Target elements for nav link scrolling */
-#films, #code, #contact-section {
-  scroll-margin-top: 6rem; /* Adjust this value based on your header's height */
+#about, #films, #code, #contact-section {
+  scroll-margin-top: var(--header-height);
 }
 
-/* Styles for sub-pages */
+/* --- Sub-pages --- */
 .page-content {
   padding: 5rem 5%;
-  max-width: 800px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
-/* --- Film & Scripts Page --- */
-.film-library .library-header {
+.library-header {
   text-align: center;
   margin-bottom: 4rem;
 }
 
-.film-library .library-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+.library-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3rem);
   margin-bottom: 0.5rem;
 }
 
-.film-library-page .page-content {
-  max-width: 1200px;
-}
-
-.script-grid {
-  display: flex;
-  flex-wrap: wrap;
+/* --- Cards (scripts & projects) --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
+  justify-content: center;
   gap: 2rem;
-  justify-content: flex-start;
 }
 
-.script-card {
-  background-color: #1F2937;
-  border: 1px solid #374151;
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: border-color 0.3s, transform 0.3s;
-  flex: 1 1 30%;
 }
 
-.script-card:hover {
-  border-color: #D97706;
+.card:hover {
+  border-color: var(--accent);
   transform: translateY(-3px);
 }
 
-.script-title {
-  font-family: 'Courier Prime', monospace;
+.card-title {
+  font-family: var(--font-body);
   font-weight: bold;
   font-size: 1.75rem;
-  color: #f3f4f6;
+  line-height: 1.25;
+  color: var(--text-strong);
 }
 
-.script-meta {
-  color: #9CA3AF;
+.card-meta {
+  color: var(--muted);
   font-size: 0.9rem;
   margin: 0.5rem 0 1.5rem 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.script-btn {
+.card-accolade {
+  margin-top: 1rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-top: 1.25rem;
+}
+
+.tag-list li {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+}
+
+.card .btn {
   align-self: flex-start;
 }
 
 /* --- PDF Modal --- */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-}
-
-.modal-content {
-  position: relative;
-  margin: 5% auto; /* 5% from the top and centered */
-  padding: 20px;
+.pdf-modal {
   width: 90%;
   max-width: 1000px;
-  height: 90%;
-  background-color: #1F2937;
+  height: 90vh;
+  margin: auto;
+  padding: 0;
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
-.close-button {
-  color: #aaa;
+.pdf-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Inner wrapper so clicks on the dialog's own padding don't count as backdrop clicks */
+.modal-inner {
+  position: relative;
+  height: 100%;
+  padding: 3.5rem 20px 20px;
+}
+
+.modal-title {
   position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;
+  top: 1rem;
+  left: 20px;
+  right: 11rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-actions a,
+.modal-actions button {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
   transition: color 0.3s;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: #D97706;
-  text-decoration: none;
-  cursor: pointer;
+.modal-actions .close-button {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.modal-actions a:hover,
+.modal-actions button:hover {
+  color: var(--accent);
 }
 
 #pdf-viewer {
   width: 100%;
   height: 100%;
-  border: 1px solid #374151;
+  border: 1px solid var(--border);
+  background-color: #fff;
 }
 
-.open-new-tab-button {
-  color: #aaa;
-  position: absolute;
-  top: 15px;
-  right: 60px; /* Position it to the left of the close button */
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s;
+/* --- Small screens --- */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 4.5rem;
+  }
+
+  header {
+    padding: 1rem 16px;
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    margin-left: 0;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero {
+    padding: 5rem 16px;
+  }
+
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 4rem 16px;
+  }
+
+  .about-photo {
+    flex-basis: auto;
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-text h2,
+  .split-content h2,
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+
+  .split-container {
+    flex-direction: column;
+  }
+
+  .split-panel {
+    min-height: 50vh;
+  }
+
+  .split-panel:hover {
+    flex: 1;
+  }
+
+  #code {
+    border-left: none;
+    border-top: 2px solid var(--border);
+  }
+
+  .contact-section {
+    padding: 4rem 16px;
+  }
+
+  .page-content {
+    padding: 3rem 16px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
 }
 
-.open-new-tab-button:hover,
-.open-new-tab-button:focus {
-  color: #D97706;
-  text-decoration: none;
-  cursor: pointer;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
+
+.more-link {
+  text-align: center;
+  margin-top: 3rem;
 }

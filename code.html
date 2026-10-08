@@ -4,22 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code & Software | Hemza Alkotob</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime&display=swap" rel="stylesheet">
+  <meta name="description" content="Software projects by Hemza Alkotob: games, tools, and creative code.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Code & Software | Hemza Alkotob">
+  <meta property="og:description" content="Games, tools, and creative code by Hemza Alkotob.">
+  <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/code.html">
+  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/code.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
     <div class="logo"><a href="index.html">Hemza Alkotob</a></div>
-    <nav>
-      <a href="index.html#films">Films</a>
-      <a href="index.html#code">Code</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
+    <nav id="site-nav">
+      <a href="index.html#about">About</a>
+      <a href="films.html">Films</a>
+      <a href="code.html" aria-current="page">Code</a>
       <a href="index.html#contact-section">Contact</a>
     </nav>
   </header>
 
   <main class="page-content">
-    <h1>Code & Software - Coming Soon</h1>
-    <p>This page will showcase GitHub repositories and other software projects.</p>
+    <div class="library-header">
+      <h1>Code & Software</h1>
+      <p>Games, tools, and creative code.</p>
+    </div>
+
+    <div class="card-grid">
+      <!-- Project card: repeat this block for each project.
+           Add a "Live Demo" link next to the GitHub one if a project is hosted. -->
+      <article class="card">
+        <div class="card-info">
+          <h2 class="card-title">IslamDunk</h2>
+          <p class="card-meta">Game | 2026</p>
+          <p class="card-logline">An Islamic-inspired arcade basketball game.</p>
+          <ul class="tag-list" aria-label="Tech stack">
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <a href="https://github.com/halkotob/IslamDunk" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-info">
+          <h2 class="card-title">SuperPy</h2>
+          <p class="card-meta">Game | 2023</p>
+          <p class="card-logline">A small game project built with Pygame.</p>
+          <ul class="tag-list" aria-label="Tech stack">
+            <li>Python</li>
+            <li>Pygame</li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <a href="https://github.com/halkotob/SuperPy" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-info">
+          <h2 class="card-title">Watto's Junkyard</h2>
+          <p class="card-meta">Text Game | 2023</p>
+          <p class="card-logline">A short, Star Wars-themed Mad Libs game.</p>
+          <ul class="tag-list" aria-label="Tech stack">
+            <li>Python</li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <a href="https://github.com/halkotob/Wattos-Junkyard" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="more-link">
+      <a href="https://github.com/halkotob" class="btn btn-secondary" target="_blank" rel="noopener">More on GitHub</a>
+    </div>
   </main>
+
+  <footer>
+    <p>© <span class="current-year">2026</span> Hemza Alkotob</p>
+  </footer>
 </body>
 </html>

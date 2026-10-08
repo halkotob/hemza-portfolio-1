@@ -4,70 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Film & Scripts | Hemza Alkotob</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime&display=swap" rel="stylesheet">
+  <meta name="description" content="Feature screenplays and TV pilots by Hemza Alkotob. Read the scripts online.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Film & Scripts | Hemza Alkotob">
+  <meta property="og:description" content="Feature screenplays and TV pilots by Hemza Alkotob.">
+  <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/films.html">
+  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/films.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="script.js" defer></script>
 </head>
-<body class="film-library-page">
+<body>
   <header>
     <div class="logo"><a href="index.html">Hemza Alkotob</a></div>
-    <nav>
-      <a href="index.html#films">Films</a>
-      <a href="index.html#code">Code</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
+    <nav id="site-nav">
+      <a href="index.html#about">About</a>
+      <a href="films.html" aria-current="page">Films</a>
+      <a href="code.html">Code</a>
       <a href="index.html#contact-section">Contact</a>
     </nav>
   </header>
 
-  <main class="page-content film-library">
+  <main class="page-content">
     <div class="library-header">
       <h1>Film & Scripts</h1>
       <p>A collection of screenplays and cinematic projects. Click to read.</p>
     </div>
 
-    <div class="script-grid">
-      <!-- Script Card 1: Repeat this block for each script -->
-      <article class="script-card">
-        <div class="script-info">
-          <h2 class="script-title">Chivalry's Not Dead</h2>
-          <p class="script-meta">Feature Film | Adventure, Fantasy</p>
-          <p class="script-logline">After Alex is thrown back into the foster system, she accidentally summons a
-Knight from out of time and the pair struggle to find a way to send him home.</p>
+    <div class="card-grid">
+      <!-- Script card: repeat this block for each script.
+           Optional: add <p class="card-accolade">★ Quarterfinalist, Some Festival 2025</p> under the logline. -->
+      <article class="card">
+        <div class="card-info">
+          <h2 class="card-title">Chivalry's Not Dead</h2>
+          <p class="card-meta">Feature Film | Adventure, Fantasy | 97 pages</p>
+          <p class="card-logline">After Alex is thrown back into the foster system, she accidentally summons a Knight from out of time and the pair struggle to find a way to send him home.</p>
         </div>
-        <a href="pdfs/310_updater.pdf" class="btn script-btn">Read Script</a>
+        <a href="pdfs/chivalrys-not-dead.pdf" class="btn script-btn" target="_blank" rel="noopener">Read Script</a>
       </article>
 
-      <!-- Script Card 2: Example of a second script -->
-      <article class="script-card">
-        <div class="script-info">
-          <h2 class="script-title">The Squared Circle - 'Entertainment'</h2>
-          <p class="script-meta">TV Pilot | Comedy, 30-Minute</p>
-          <p class="script-logline">When Freddie - a struggling college-educated screenwriter - get his big break with the WWE, he has to find the art in the absurd world of professional wrestling.</p>
+      <article class="card">
+        <div class="card-info">
+          <h2 class="card-title">The Squared Circle - 'Entertainment'</h2>
+          <p class="card-meta">TV Pilot | Comedy, 30-Minute | 26 pages</p>
+          <p class="card-logline">When Freddie - a struggling college-educated screenwriter - gets his big break with the WWE, he has to find the art in the absurd world of professional wrestling.</p>
         </div>
-        <a href="pdfs/annotated-411-v3.pdf" class="btn script-btn">Read Script</a>
+        <a href="pdfs/the-squared-circle-pilot.pdf" class="btn script-btn" target="_blank" rel="noopener">Read Script</a>
       </article>
 
-      <!-- Script Card 2: Example of a second script -->
-      <article class="script-card">
-        <div class="script-info">
-          <h2 class="script-title">The Last Scribe</h2>
-          <p class="script-meta">TV Pilot | Fantasy, Drama</p>
-          <p class="script-logline">In a kingdom where writing is forbidden, a young woman secretly preserves her people\'s history, risking everything to keep their stories alive.</p>
+      <!-- TODO: re-enable once the script PDF is added (e.g. pdfs/the-last-scribe.pdf)
+      <article class="card">
+        <div class="card-info">
+          <h2 class="card-title">The Last Scribe</h2>
+          <p class="card-meta">TV Pilot | Fantasy, Drama</p>
+          <p class="card-logline">In a kingdom where writing is forbidden, a young woman secretly preserves her people's history, risking everything to keep their stories alive.</p>
         </div>
-        <a href="pdfs/placeholder-script-2.pdf" class="btn script-btn">Read Script</a>
+        <a href="pdfs/the-last-scribe.pdf" class="btn script-btn" target="_blank" rel="noopener">Read Script</a>
       </article>
-
-      <!-- Add more <article class="script-card"> blocks here for new scripts -->
+      -->
     </div>
   </main>
 
-  <!-- PDF Modal -->
-  <div id="pdf-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <a id="open-in-new-tab-btn" href="" target="_blank" class="open-new-tab-button" title="Open in new tab">&#x2924;</a>
-      <iframe id="pdf-viewer" src="" frameborder="0"></iframe>
-    </div>
-  </div>
+  <footer>
+    <p>© <span class="current-year">2026</span> Hemza Alkotob</p>
+  </footer>
 
-  <script src="script.js"></script>
+  <!-- PDF Modal -->
+  <dialog id="pdf-modal" class="pdf-modal" aria-labelledby="pdf-modal-title">
+    <div class="modal-inner">
+      <h2 id="pdf-modal-title" class="modal-title"></h2>
+      <div class="modal-actions">
+        <a id="open-in-new-tab-btn" href="" target="_blank" rel="noopener">Open in new tab &#x2197;</a>
+        <button type="button" class="close-button" aria-label="Close">&times;</button>
+      </div>
+      <iframe id="pdf-viewer" src="" title="Script viewer"></iframe>
+    </div>
+  </dialog>
 </body>
 </html>
