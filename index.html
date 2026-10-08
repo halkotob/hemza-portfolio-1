@@ -15,13 +15,13 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <div class="logo"><a href="index.html">Hemza Alkotob</a></div>
+    <div class="logo"><a href="index.html"><span class="logo-ar" lang="ar" aria-hidden="true">حمزة</span>Hemza Alkotob</a></div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
     <nav id="site-nav">
       <a href="#about">About</a>
@@ -50,6 +50,26 @@
       <div class="about-text">
         <h2>About Me</h2>
         <p>My name is Hemza Alkotob, a proud Muslim Syrian-American. I love finding the intersection between technology and creativity, and leveraging storytelling to share ideas with the world.</p>
+
+        <dl class="now-list">
+          <dt>Building</dt>
+          <dd><a href="code.html">IslamDunk</a>, a 2v2 arcade basketball game with a career mode and online play</dd>
+          <dt>Latest script</dt>
+          <dd><a href="films.html">The Bear: "Press"</a>, a spec episode</dd>
+        </dl>
+
+        <!-- TODO: swap in your own favourites (films, books, shows, teams...) -->
+        <h3 class="interests-heading">Found all over my work</h3>
+        <ul class="tag-list interests">
+          <li>Pro wrestling</li>
+          <li>Star Wars</li>
+          <li>Restaurant kitchens</li>
+          <li>Basketball</li>
+          <li>Knights &amp; fantasy</li>
+          <li>Faith &amp; heritage</li>
+        </ul>
+
+        <p class="signature" lang="ar" aria-label="Signed, Hemza">حمزة</p>
       </div>
     </section>
 
@@ -62,7 +82,10 @@
         <a href="code.html" class="split-panel technical">
           <div class="panel-preview window" aria-hidden="true">
             <div class="window-bar"><i></i><i></i><i></i><em>halkotob.github.io/IslamDunk</em></div>
-            <img src="images/projects/islamdunk.jpg" alt="">
+            <picture>
+              <source srcset="images/projects/islamdunk-gameplay.jpg" media="(prefers-reduced-motion: reduce)">
+              <img src="images/projects/islamdunk-gameplay.webp" alt="" loading="lazy">
+            </picture>
           </div>
           <div class="split-content">
             <h2>Technical Projects</h2>
@@ -74,10 +97,11 @@
           <div class="panel-preview pages" aria-hidden="true">
             <img src="images/scripts/the-squared-circle-pilot-title.jpg" alt="">
             <img src="images/scripts/chivalrys-not-dead-title.jpg" alt="">
+            <img src="images/scripts/the-bear-press-spec-title.jpg" alt="">
           </div>
           <div class="split-content">
             <h2>Creative Projects</h2>
-            <p>Feature screenplays and TV pilots.</p>
+            <p>Features, TV pilots, and specs.</p>
             <span class="btn">Read Scripts</span>
           </div>
         </a>

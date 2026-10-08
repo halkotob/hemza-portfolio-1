@@ -9,18 +9,18 @@
   <meta property="og:title" content="Technical Projects | Hemza Alkotob">
   <meta property="og:description" content="Games, tools, and creative code by Hemza Alkotob.">
   <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/code.html">
-  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/projects/islamdunk.jpg">
+  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/projects/islamdunk-gameplay.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <div class="logo"><a href="index.html">Hemza Alkotob</a></div>
+    <div class="logo"><a href="index.html"><span class="logo-ar" lang="ar" aria-hidden="true">حمزة</span>Hemza Alkotob</a></div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
     <nav id="site-nav">
       <a href="index.html#about">About</a>
@@ -45,16 +45,21 @@
         <a href="https://halkotob.github.io/IslamDunk/" class="card-preview" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
           <div class="window">
             <div class="window-bar"><i></i><i></i><i></i><em>halkotob.github.io/IslamDunk</em></div>
-            <img src="images/projects/islamdunk.jpg" alt="">
+            <picture>
+              <source srcset="images/projects/islamdunk-gameplay.jpg" media="(prefers-reduced-motion: reduce)">
+              <img src="images/projects/islamdunk-gameplay.webp" alt="" loading="lazy">
+            </picture>
           </div>
         </a>
         <div class="card-body">
           <div class="card-info">
             <h2 class="card-title">IslamDunk</h2>
-            <p class="card-meta">Browser Game | 2026</p>
-            <p class="card-logline">An Islamic-inspired arcade basketball game, playable right in your browser.</p>
+            <p class="card-meta">Browser + Desktop Game | 2026</p>
+            <p class="card-logline">An Islamic-inspired 2v2 arcade basketball game with masjid-league teams, a career mode, online play with a friend, and mini games. Plays in the browser, phones included.</p>
             <ul class="tag-list" aria-label="Tech stack">
               <li>JavaScript</li>
+              <li>Vite</li>
+              <li>Electron</li>
             </ul>
           </div>
           <div class="card-actions">

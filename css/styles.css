@@ -97,8 +97,17 @@ header {
 }
 
 .logo a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
   color: inherit;
   text-decoration: none;
+}
+
+.logo-ar {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: 1.35rem;
+  color: var(--accent);
 }
 
 nav a {
@@ -297,6 +306,49 @@ nav a[aria-current="page"] {
   margin-top: 1rem;
 }
 
+.now-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.25rem;
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--accent);
+  background-color: rgba(31, 41, 55, 0.6);
+  text-align: left;
+}
+
+.now-list dt {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  padding-top: 0.1rem;
+}
+
+.interests-heading {
+  margin-top: 1.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tag-list.interests {
+  margin-top: 0.75rem;
+}
+
+/* Arabic calligraphy signature */
+.signature {
+  margin-top: 1.5rem;
+  font-family: 'Aref Ruqaa', serif;
+  font-size: 3.25rem;
+  line-height: 1;
+  color: var(--accent);
+  text-align: right;
+}
+
 /* --- Two Paths (Technical / Creative) --- */
 .paths {
   padding: 5rem 0 0;
@@ -375,24 +427,29 @@ nav a[aria-current="page"] {
   transition: rotate 0.5s, translate 0.5s;
 }
 
-.panel-preview.pages img:first-child {
-  translate: -85% 10px;
-  rotate: -7deg;
+.panel-preview.pages img:nth-child(1) {
+  translate: -110% 16px;
+  rotate: -9deg;
 }
 
-.panel-preview.pages img:last-child {
-  translate: -15% 0;
-  rotate: 6deg;
+.panel-preview.pages img:nth-child(2) {
+  translate: -50% 0;
+  rotate: -1deg;
 }
 
-.split-panel:hover .panel-preview.pages img:first-child {
-  translate: -95% 10px;
-  rotate: -10deg;
+.panel-preview.pages img:nth-child(3) {
+  translate: 10% 16px;
+  rotate: 8deg;
 }
 
-.split-panel:hover .panel-preview.pages img:last-child {
-  translate: -5% 0;
-  rotate: 9deg;
+.split-panel:hover .panel-preview.pages img:nth-child(1) {
+  translate: -125% 16px;
+  rotate: -12deg;
+}
+
+.split-panel:hover .panel-preview.pages img:nth-child(3) {
+  translate: 25% 16px;
+  rotate: 11deg;
 }
 
 /* Fake browser / editor window chrome */
@@ -901,6 +958,14 @@ body.cinematic::before {
     flex-basis: auto;
     width: 160px;
     height: 160px;
+  }
+
+  .tag-list.interests {
+    justify-content: center;
+  }
+
+  .signature {
+    text-align: center;
   }
 
   .about-text h2,
