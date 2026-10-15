@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => root.classList.remove('intro-on'), 450);
       ['keydown', 'wheel', 'touchstart'].forEach(ev => window.removeEventListener(ev, finish));
     };
-    const timer = setTimeout(finish, 4700);
+    const timer = setTimeout(finish, 5300);
     intro.addEventListener('click', () => { clearTimeout(timer); finish(); });
     ['keydown', 'wheel', 'touchstart'].forEach(ev => window.addEventListener(ev, finish, { passive: true }));
   }

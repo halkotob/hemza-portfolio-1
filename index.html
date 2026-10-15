@@ -33,21 +33,20 @@
 <body>
   <!-- Comic book intro: cover opens, camera moves panel to panel, lands on the title page -->
   <div id="comic-intro" class="comic-intro">
-    <div class="comic-stage" aria-hidden="true">
-      <div class="comic-book">
-        <div class="page-window">
-          <div class="comic-page">
-            <div class="panel p1"><span class="cap">Detroit, Michigan.</span><span class="bubble">Hello!</span></div>
-            <div class="panel p2"><span class="cap">Meanwhile&hellip;</span><span class="bubble">Salam!</span></div>
-            <div class="panel p3"><span class="cap">Later that night&hellip;</span><span class="bubble">Marhaba!</span></div>
-            <div class="panel p4"><span class="cap">And so it begins&hellip;</span><span class="bubble">Welcome</span></div>
-          </div>
-        </div>
-        <div class="comic-cover">
-          <span class="cover-issue">No. 1</span>
-          <span class="cover-title">Hemza</span>
-          <span class="cover-sub">Code <em>meets</em> Cinema</span>
-        </div>
+    <div class="intro-stage" aria-hidden="true">
+      <div class="intro-boxes">
+        <span class="ibox thought b1">Hello there!</span>
+        <span class="ibox torn b2">Marhaba!</span>
+        <span class="ibox thought b3">Salam!</span>
+        <span class="ibox torn b4">Welcome, wherever you came from!</span>
+      </div>
+      <div class="intro-splash">
+        <span class="speech splash-bubble">I'm Hemza Alkotob, and you're looking at my personal portfolio.</span>
+        <span class="name-callout">
+          <span class="callout-sig" lang="ar">حمزة</span>
+          <span class="callout-name">Hemza Alkotob</span>
+          <span class="callout-role">Cloud Engineer &amp; Screenwriter</span>
+        </span>
       </div>
     </div>
     <button type="button" class="intro-skip">Skip &rsaquo;</button>
@@ -67,7 +66,10 @@
     <!-- Title page: where the comic intro lands -->
     <section class="hero">
       <p class="issue-tag">Issue #1 &middot; Detroit, MI</p>
-      <h1 class="comic-title">Hemza Alkotob</h1>
+      <h1 class="name-callout hero-callout">
+        <span class="callout-sig" lang="ar" aria-hidden="true">حمزة</span>
+        <span class="callout-name">Hemza Alkotob</span>
+      </h1>
       <p class="hero-role">Cloud Engineer <span>&amp;</span> Screenwriter</p>
       <p class="caption-box hero-summary">Cloud engineer with 2+ years running AWS infrastructure for 75+ hosted client environments: Terraform, CloudFormation, CI/CD, and on-call. Screenwriter with dual degrees in Computer Science and Film from the University of Michigan.</p>
       <p class="speech hero-bubble">In this issue: scripts, games, and the systems behind them. Either way, I'm looking for clues that lead to a larger truth.</p>
