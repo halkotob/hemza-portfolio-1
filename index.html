@@ -15,11 +15,43 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Bangers&family=Playfair+Display:wght@700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Comic intro: first visit only (or ?intro to replay). Skipped for reduced motion.
+    (function () {
+      try {
+        var replay = /[?&]intro\b/.test(location.search);
+        var seen = localStorage.getItem('ha-intro-seen');
+        var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if ((replay || !seen) && !still) document.documentElement.classList.add('intro-on');
+      } catch (e) {}
+    })();
+  </script>
   <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Comic book intro: cover opens, camera moves panel to panel, lands on the title page -->
+  <div id="comic-intro" class="comic-intro">
+    <div class="comic-stage" aria-hidden="true">
+      <div class="comic-book">
+        <div class="page-window">
+          <div class="comic-page">
+            <div class="panel p1"><span class="cap">Detroit, Michigan.</span><span class="bubble">Hello!</span></div>
+            <div class="panel p2"><span class="cap">Meanwhile&hellip;</span><span class="bubble">Salam!</span></div>
+            <div class="panel p3"><span class="cap">Later that night&hellip;</span><span class="bubble">Marhaba!</span></div>
+            <div class="panel p4"><span class="cap">And so it begins&hellip;</span><span class="bubble">Welcome</span></div>
+          </div>
+        </div>
+        <div class="comic-cover">
+          <span class="cover-issue">No. 1</span>
+          <span class="cover-title">Hemza</span>
+          <span class="cover-sub">Code <em>meets</em> Cinema</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="intro-skip">Skip &rsaquo;</button>
+  </div>
   <header>
     <div class="logo"><a href="index.html"><span class="logo-ar" lang="ar" aria-hidden="true">حمزة</span>Hemza Alkotob</a></div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
@@ -32,20 +64,17 @@
   </header>
 
   <main>
+    <!-- Title page: where the comic intro lands -->
     <section class="hero">
-      <div class="hero-star" aria-hidden="true"></div>
-      <h1 class="greeting">
-        <span class="sr-only">Hello!</span>
-        <!-- Cycles through the greetings listed in data-words (see script.js) -->
-        <span aria-hidden="true"><span class="typed" data-words='["Hello!", "Salam!", "Marhaba!", "Welcome"]'>Hello!</span><span class="cursor"></span></span>
-      </h1>
-      <p class="hero-intro">I'm <strong>Hemza Alkotob</strong>, a cloud engineer and screenwriter in Detroit. I keep AWS infrastructure running, and I write TV and features.</p>
-      <p class="hero-sub">Either way, I'm looking for clues that lead to a larger truth.</p>
+      <p class="issue-tag">Issue #1 &middot; Detroit, MI</p>
+      <h1 class="comic-title">Hemza Alkotob</h1>
+      <p class="hero-role">Cloud Engineer <span>&amp;</span> Screenwriter</p>
+      <p class="caption-box hero-summary">Cloud engineer with 2+ years running AWS infrastructure for 75+ hosted client environments: Terraform, CloudFormation, CI/CD, and on-call. Screenwriter with dual degrees in Computer Science and Film from the University of Michigan.</p>
+      <p class="speech hero-bubble">In this issue: scripts, games, and the systems behind them. Either way, I'm looking for clues that lead to a larger truth.</p>
       <div class="hero-actions">
         <a href="#work" class="btn">See the work</a>
         <a href="pdfs/hemza-alkotob-resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">Resume</a>
       </div>
-      <a href="#about" class="scroll-cue">About me <span class="arrow" aria-hidden="true">&darr;</span></a>
     </section>
 
     <section id="about" class="about-section">
@@ -53,6 +82,7 @@
            <img class="about-photo" src="images/headshot.jpg" alt="Hemza Alkotob"> -->
       <div class="about-photo placeholder" aria-hidden="true">HA</div>
       <div class="about-text">
+        <p class="kicker">Chapter 1 &middot; Origin story</p>
         <h2>About Me</h2>
         <p>I'm a proud Muslim Syrian-American, a film nerd with a computer science degree, and a big believer in mash-ups.</p>
         <p class="mashup-line" aria-label="Syrian meets American. Film meets code. Left brain meets right brain.">
@@ -94,6 +124,7 @@
 
     <!-- One body of work: scripts and code side by side -->
     <section id="work" class="work-section" aria-labelledby="work-heading">
+      <p class="kicker">Chapter 2 &middot; The collected works</p>
       <h2 id="work-heading" class="section-heading">The Work</h2>
       <p class="section-intro">Scripts and software, side by side. Every one is a mash-up of something.</p>
 
@@ -177,6 +208,7 @@
     </section>
 
     <section id="contact-section" class="contact-section">
+      <p class="kicker">Next issue&hellip;</p>
       <h2>Say Hello</h2>
       <p>Hiring for a cloud team, making something with a story in it, or just want to trade movie recs? I'd love to hear from you.</p>
       <a href="mailto:halkotob@umich.edu" class="btn">halkotob@umich.edu</a>
@@ -191,7 +223,7 @@
 
   <footer>
     <p class="footer-line">Nothing matters until you know what matters.</p>
-    <p>© <span class="current-year">2026</span> Hemza Alkotob</p>
+    <p>© <span class="current-year">2026</span> Hemza Alkotob &middot; <a href="?intro" class="replay-link">Read the opening again</a></p>
   </footer>
 </body>
 </html>

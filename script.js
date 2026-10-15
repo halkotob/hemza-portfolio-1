@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Comic intro (home page). The <head> script decides whether it plays.
+  const root = document.documentElement;
+  const intro = document.getElementById('comic-intro');
+  if (intro && root.classList.contains('intro-on')) {
+    try { localStorage.setItem('ha-intro-seen', '1'); } catch (e) {}
+    if (/[?&]intro\b/.test(location.search)) {
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      intro.classList.add('leaving');
+      setTimeout(() => root.classList.remove('intro-on'), 450);
+      ['keydown', 'wheel', 'touchstart'].forEach(ev => window.removeEventListener(ev, finish));
+    };
+    const timer = setTimeout(finish, 4700);
+    intro.addEventListener('click', () => { clearTimeout(timer); finish(); });
+    ['keydown', 'wheel', 'touchstart'].forEach(ev => window.addEventListener(ev, finish, { passive: true }));
+  }
+
   // Keep the footer year current
   document.querySelectorAll('.current-year').forEach(el => {
     el.textContent = new Date().getFullYear();
