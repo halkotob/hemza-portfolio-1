@@ -58,6 +58,38 @@ body::after {
 
 a {
   color: var(--accent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: from-font;
+}
+
+/* --- Typography defaults --- */
+html {
+  -webkit-font-smoothing: antialiased; /* Light text on a dark ground renders heavy without this */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .card-title, .hero-role, .section-intro, .mashup {
+  text-wrap: balance;
+}
+
+p, dd, li {
+  text-wrap: pretty;
+}
+
+/* Monospace runs wide: cap prose near 65 characters */
+.about-text > p:not(.kicker):not(.signature):not(.mashup-line),
+.contact-section > p,
+.card-logline {
+  max-width: 65ch;
+}
+
+.contact-section > p {
+  margin-inline: auto;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-deep);
 }
 
 img {
@@ -221,7 +253,7 @@ nav a[aria-current="page"] {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.9rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.069em;
   text-transform: uppercase;
   transition: color 0.3s;
 }
@@ -323,7 +355,7 @@ nav a[aria-current="page"] {
 .now-list dt {
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
   font-size: 0.85rem;
   padding-top: 0.1rem;
 }
@@ -335,7 +367,7 @@ nav a[aria-current="page"] {
   font-weight: normal;
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
 }
 
 .tag-list.interests {
@@ -675,7 +707,7 @@ footer {
   font-size: 0.9rem;
   margin: 0.5rem 0 1.25rem 0;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
 }
 
 .tag-list {
@@ -761,7 +793,7 @@ footer {
 .script-details dt {
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
   font-size: 0.85rem;
   padding-top: 0.1rem;
 }
@@ -815,7 +847,7 @@ body.cinematic::before {
 .slugline {
   font-family: var(--font-body);
   color: var(--accent);
-  letter-spacing: 2px;
+  letter-spacing: 0.125em;
   margin-bottom: 0.75rem;
 }
 
@@ -824,7 +856,7 @@ body.cinematic::before {
   max-width: 960px;
   margin: 4rem auto 0;
   color: var(--muted);
-  letter-spacing: 2px;
+  letter-spacing: 0.125em;
 }
 
 /* --- PDF Modal --- */
@@ -1112,7 +1144,7 @@ body.cinematic::before {
   color: var(--muted);
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.078em;
   margin-bottom: 0.25rem;
 }
 
@@ -1200,7 +1232,21 @@ body.cinematic::before {
     radial-gradient(circle, rgba(76, 195, 138, 0.2) 1.6px, transparent 1.7px) 0 0 / 14px 14px,
     radial-gradient(ellipse at 50% 45%, #15281f, var(--bg-deep) 75%);
   cursor: pointer;
-  animation: intro-out 0.5s ease-in 4.8s forwards;
+  animation: intro-out 0.45s ease-in var(--t-exit) forwards;
+
+  /* One timeline for the whole opening. Greetings speed up as they come
+     (gaps 400 → 340 → 290ms) so they read as a wave, not a metronome.
+     The splash overlaps the sweep, and the stamp lands on the slam's settle. */
+  --t-b1: 0.15s;
+  --t-b2: 0.55s;
+  --t-b3: 0.89s;
+  --t-b4: 1.18s;
+  --t-sweep: 2.1s;    /* greetings leave together */
+  --t-bubble: 2.2s;   /* starts while the sweep is still moving */
+  --t-slam: 2.75s;    /* the lead */
+  --t-impact: 3.1s;   /* 70% through the slam */
+  --t-stamp: 3.15s;   /* signature signs as the name settles */
+  --t-exit: 4.55s;
 }
 
 .comic-intro.leaving {
@@ -1221,7 +1267,7 @@ body.cinematic::before {
 .intro-boxes {
   position: absolute;
   inset: 0;
-  animation: boxes-away 0.35s ease-in 2.6s forwards;
+  animation: boxes-away 0.3s ease-in var(--t-sweep) forwards;
 }
 
 @keyframes boxes-away {
@@ -1232,7 +1278,7 @@ body.cinematic::before {
   position: absolute;
   font-family: var(--font-comic);
   font-size: clamp(1.6rem, 6vw, 3.4rem);
-  letter-spacing: 1px;
+  letter-spacing: 0.018em;
   line-height: 1.05;
   color: var(--ink);
   opacity: 0;
@@ -1240,14 +1286,15 @@ body.cinematic::before {
 }
 
 @keyframes pop {
-  0%   { opacity: 0; transform: scale(0.2) rotate(var(--r, 0deg)); }
+  0%   { opacity: 0; transform: scale(var(--s, 0.2)) rotate(var(--r, 0deg)); }
   100% { opacity: 1; transform: scale(1) rotate(var(--r, 0deg)); }
 }
 
-.b1 { top: 6%;  left: 4%;   --r: -5deg; animation-delay: 0.2s; }
-.b2 { top: 14%; right: 4%;  --r: 4deg;  animation-delay: 0.75s; }
-.b3 { top: 44%; left: 10%;  --r: 3deg;  animation-delay: 1.3s; }
-.b4 { top: 64%; right: 3%;  --r: -2deg; animation-delay: 1.85s; max-width: 70%; font-size: clamp(1.4rem, 5vw, 3rem); }
+/* --s varies the travel: the closing "Welcome" line pops from furthest */
+.b1 { top: 6%;  left: 4%;   --r: -5deg; --s: 0.4;  animation-delay: var(--t-b1); }
+.b2 { top: 14%; right: 4%;  --r: 4deg;  --s: 0.35; animation-delay: var(--t-b2); }
+.b3 { top: 44%; left: 10%;  --r: 3deg;  --s: 0.45; animation-delay: var(--t-b3); }
+.b4 { top: 64%; right: 3%;  --r: -2deg; --s: 0.2;  animation-delay: var(--t-b4); animation-duration: 0.5s; max-width: 70%; font-size: clamp(1.4rem, 5vw, 3rem); }
 
 /* Thought bubble: cloud with a trail of little puffs */
 .thought {
@@ -1306,12 +1353,13 @@ body.cinematic::before {
   justify-content: center;
   gap: 2.25rem;
   text-align: center;
-  opacity: 0;
-  animation: fade-in 0.3s ease-out 2.75s forwards;
+  /* No entrance of its own: the bubble and the name carry it */
 }
 
-/* Burst lines behind the splash */
+/* Burst lines behind the splash: decoration, fades in on the slam's impact */
 .intro-splash::before {
+  opacity: 0;
+  animation: fade-in 0.25s ease-out var(--t-impact) forwards;
   content: "";
   position: absolute;
   left: 50%;
@@ -1333,12 +1381,13 @@ body.cinematic::before {
   max-width: min(86vw, 560px);
   font-size: clamp(1rem, 2.6vw, 1.25rem);
   opacity: 0;
-  animation: pop 0.4s cubic-bezier(0.3, 1.6, 0.5, 1) 2.85s forwards;
+  --s: 0.6; /* support: travels less than the name */
+  animation: pop 0.4s cubic-bezier(0.3, 1.6, 0.5, 1) var(--t-bubble) forwards;
 }
 
 .intro-splash .name-callout {
   opacity: 0;
-  animation: slam 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) 3.35s forwards;
+  animation: slam 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) var(--t-slam) forwards;
 }
 
 @keyframes slam {
@@ -1349,7 +1398,7 @@ body.cinematic::before {
 
 .intro-splash .callout-sig {
   opacity: 0;
-  animation: sign 0.5s ease-out 3.85s forwards;
+  animation: sign 0.5s ease-out var(--t-stamp) forwards;
 }
 
 @keyframes sign {
@@ -1362,7 +1411,7 @@ body.cinematic::before {
   margin-top: 0.6rem;
   font-family: var(--font-comic);
   font-size: clamp(1.1rem, 3.5vw, 1.7rem);
-  letter-spacing: 2px;
+  letter-spacing: 0.074em;
   color: var(--green);
   text-shadow: 2px 2px 0 var(--ink);
 }
@@ -1380,7 +1429,7 @@ body.cinematic::before {
   font-family: var(--font-comic);
   font-size: clamp(3.4rem, 13vw, 8rem);
   line-height: 0.92;
-  letter-spacing: 3px;
+  letter-spacing: 0.023em;
   color: #fff;
   -webkit-text-stroke: 2px var(--ink);
   text-shadow:
@@ -1412,7 +1461,7 @@ body.cinematic::before {
   box-shadow: 3px 3px 0 var(--ink);
   font-family: var(--font-comic);
   font-size: 1.1rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.057em;
   color: var(--ink);
   cursor: pointer;
 }
@@ -1443,7 +1492,7 @@ body.cinematic::before {
   box-shadow: 3px 3px 0 var(--accent);
   font-family: var(--font-comic);
   font-size: 1rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.062em;
   color: var(--ink);
   rotate: -2deg;
 }
@@ -1457,7 +1506,7 @@ body.cinematic::before {
   margin-top: 0.75rem;
   font-family: var(--font-comic);
   font-size: clamp(1.3rem, 4vw, 2rem);
-  letter-spacing: 2px;
+  letter-spacing: 0.062em;
   color: var(--green);
 }
 
@@ -1517,7 +1566,7 @@ body.cinematic::before {
   border: 2px solid var(--ink);
   font-family: var(--font-comic);
   font-size: 1rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.062em;
   color: var(--ink);
   rotate: -1.5deg;
 }

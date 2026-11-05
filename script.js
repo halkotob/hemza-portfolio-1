@@ -8,16 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
       history.replaceState(null, '', location.pathname + location.hash);
     }
     let finished = false;
-    const finish = () => {
+    let timer;
+    // ended: the CSS exit already played, so tear down now. Otherwise the
+    // visitor cut it short, so play the quick exit first.
+    const finish = (ended) => {
       if (finished) return;
       finished = true;
-      intro.classList.add('leaving');
-      setTimeout(() => root.classList.remove('intro-on'), 450);
-      ['keydown', 'wheel', 'touchstart'].forEach(ev => window.removeEventListener(ev, finish));
+      clearTimeout(timer);
+      ['keydown', 'wheel', 'touchstart'].forEach(ev => window.removeEventListener(ev, skip));
+      if (ended === true) {
+        root.classList.remove('intro-on');
+      } else {
+        intro.classList.add('leaving');
+        setTimeout(() => root.classList.remove('intro-on'), 400);
+      }
     };
-    const timer = setTimeout(finish, 5300);
-    intro.addEventListener('click', () => { clearTimeout(timer); finish(); });
-    ['keydown', 'wheel', 'touchstart'].forEach(ev => window.addEventListener(ev, finish, { passive: true }));
+    const skip = () => finish(false);
+    // The CSS timeline owns timing: finish when its exit animation ends.
+    // The timer is only a fallback in case animationend never fires.
+    intro.addEventListener('animationend', (e) => {
+      if (e.target === intro && e.animationName === 'intro-out' && !intro.classList.contains('leaving')) finish(true);
+    });
+    timer = setTimeout(() => finish(true), 7000);
+    intro.addEventListener('click', skip);
+    ['keydown', 'wheel', 'touchstart'].forEach(ev => window.addEventListener(ev, skip, { passive: true }));
   }
 
   // Keep the footer year current
