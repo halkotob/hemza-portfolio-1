@@ -12,6 +12,8 @@
   <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/">
   <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/films.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0E1714">
+  <meta name="color-scheme" content="dark">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +33,7 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <!-- Comic book intro: cover opens, camera moves panel to panel, lands on the title page -->
   <div id="comic-intro" class="comic-intro">
     <div class="intro-stage" aria-hidden="true">
@@ -44,7 +47,7 @@
         <span class="speech splash-bubble">I’m Hemza Alkotob, and you’re looking at my personal portfolio.</span>
         <span class="name-callout">
           <span class="callout-sig" lang="ar" dir="rtl">حمزة</span>
-          <span class="callout-name">Hemza Alkotob</span>
+          <span class="callout-name" translate="no">Hemza Alkotob</span>
           <span class="callout-role">Cloud Engineer &amp; Screenwriter</span>
         </span>
       </div>
@@ -52,8 +55,8 @@
     <button type="button" class="intro-skip">Skip &rsaquo;</button>
   </div>
   <header>
-    <div class="logo"><a href="index.html"><span class="logo-ar" lang="ar" dir="rtl" aria-hidden="true">حمزة</span>Hemza Alkotob</a></div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
+    <div class="logo"><a href="index.html"><span class="logo-ar" lang="ar" dir="rtl" aria-hidden="true">حمزة</span><span translate="no">Hemza Alkotob</span></a></div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">&#9776;</button>
     <nav id="site-nav">
       <a href="#about">About</a>
       <a href="#work">Work</a>
@@ -62,13 +65,13 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Title page: where the comic intro lands -->
     <section class="hero">
       <p class="issue-tag">Issue #1 &middot; Detroit, MI</p>
       <h1 class="name-callout hero-callout">
         <span class="callout-sig" lang="ar" dir="rtl" aria-hidden="true">حمزة</span>
-        <span class="callout-name">Hemza Alkotob</span>
+        <span class="callout-name" translate="no">Hemza Alkotob</span>
       </h1>
       <p class="hero-role">Cloud Engineer <span>&amp;</span> Screenwriter</p>
       <p class="caption-box hero-summary">Cloud engineer with 2+ years running AWS infrastructure for 75+ hosted client environments: Terraform, CloudFormation, CI/CD, and on-call. Screenwriter with dual degrees in Computer Science and Film from the University of Michigan.</p>
@@ -137,7 +140,7 @@
               <div class="window-bar"><i></i><i></i><i></i><em>halkotob.github.io/IslamDunk</em></div>
               <picture>
                 <source srcset="images/projects/islamdunk-gameplay.jpg" media="(prefers-reduced-motion: reduce)">
-                <img src="images/projects/islamdunk-gameplay.webp" alt="" loading="lazy">
+                <img width="640" height="360" src="images/projects/islamdunk-gameplay.webp" alt="" loading="lazy">
               </picture>
             </div>
           </a>
@@ -157,7 +160,7 @@
 
         <article class="card">
           <a href="films.html" class="card-preview work-thumb" tabindex="-1" aria-hidden="true">
-            <img src="images/scripts/the-bear-press-spec-title.jpg" alt="" loading="lazy">
+            <img width="600" height="777" src="images/scripts/the-bear-press-spec-title.jpg" alt="" loading="lazy">
           </a>
           <div class="card-body">
             <div class="card-info">
@@ -174,7 +177,7 @@
 
         <article class="card">
           <a href="films.html" class="card-preview work-thumb" tabindex="-1" aria-hidden="true">
-            <img src="images/scripts/the-squared-circle-pilot-title.jpg" alt="" loading="lazy">
+            <img width="600" height="777" src="images/scripts/the-squared-circle-pilot-title.jpg" alt="" loading="lazy">
           </a>
           <div class="card-body">
             <div class="card-info">
@@ -191,7 +194,7 @@
 
         <article class="card">
           <a href="films.html" class="card-preview work-thumb" tabindex="-1" aria-hidden="true">
-            <img src="images/scripts/chivalrys-not-dead-title.jpg" alt="" loading="lazy">
+            <img width="600" height="777" src="images/scripts/chivalrys-not-dead-title.jpg" alt="" loading="lazy">
           </a>
           <div class="card-body">
             <div class="card-info">

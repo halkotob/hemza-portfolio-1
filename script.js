@@ -39,34 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
     el.textContent = new Date().getFullYear();
   });
 
-  // Typewriter greeting: types each word, holds, then backspaces to the next
-  const typed = document.querySelector('.typed');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (typed && !reduceMotion) {
-    const words = JSON.parse(typed.dataset.words);
-    const TYPE_MS = 120, DELETE_MS = 60, HOLD_MS = 1800, GAP_MS = 400;
-    let wordIndex = 0;
-    let charCount = words[0].length; // First word is already on the page
-    let deleting = true;
-
-    const tick = () => {
-      const word = words[wordIndex];
-      charCount += deleting ? -1 : 1;
-      typed.textContent = word.slice(0, charCount);
-
-      if (deleting && charCount === 0) {
-        deleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(tick, GAP_MS);
-      } else if (!deleting && charCount === words[wordIndex].length) {
-        deleting = true;
-        setTimeout(tick, HOLD_MS);
-      } else {
-        setTimeout(tick, deleting ? DELETE_MS : TYPE_MS);
-      }
-    };
-    setTimeout(tick, HOLD_MS);
-  }
+  // Gameplay previews loop forever, so stop them on a still frame after 5s on
+  // screen (WCAG 2.2.2). Hovering or focusing the card plays them again.
+  // The still is the reduced-motion <source> next to the animated <img>.
+  document.querySelectorAll('.window picture img[src$=".webp"]').forEach(img => {
+    const source = img.parentElement.querySelector('source');
+    const card = img.closest('.card');
+    if (!source || !card || !('IntersectionObserver' in window)) return;
+    const animated = img.getAttribute('src');
+    const still = source.getAttribute('srcset');
+    let timer;
+    const settle = () => { clearTimeout(timer); timer = setTimeout(() => { img.src = still; }, 5000); };
+    const replay = () => { if (img.getAttribute('src') !== animated) img.src = animated; settle(); };
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) settle(); else clearTimeout(timer);
+    }, { threshold: 0.5 }).observe(img);
+    card.addEventListener('mouseenter', replay);
+    card.addEventListener('focusin', replay);
+  });
 
   // Mobile nav toggle
   const navToggle = document.querySelector('.nav-toggle');
@@ -76,12 +66,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = nav.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', isOpen);
     });
-    // Close the menu after picking a link
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', false);
-      });
+    const closeNav = () => {
+      nav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    };
+    // Close the menu after picking a link, or on Escape (focus back to the toggle)
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        closeNav();
+        navToggle.focus();
+      }
     });
   }
 

@@ -3,7 +3,8 @@
   --bg: #0E1714;            /* Near-black forest green */
   --bg-deep: #08110E;
   --surface: #16241F;
-  --border: #2B3F37;
+  --border: #2B3F37;        /* Dividers and card edges (decorative) */
+  --border-strong: #5B766A; /* Edges of controls: 3:1+ on --bg and --surface */
   --text: #E6ECE8;
   --text-strong: #F4F7F5;
   --muted: #9DB0A7;
@@ -12,11 +13,41 @@
   --green: #4CC38A;         /* Secondary green */
   --font-display: 'Playfair Display', serif;
   --font-body: 'Courier Prime', monospace;
-  --header-height: 5.25rem;
+  --header-height: 5.5rem;  /* Measured: 87px desktop */
+  /* Motion: strong ease-out for UI, short durations */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-press: 160ms;
+  --dur-hover: 200ms;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height); /* Sticky header never covers an anchor or focused element */
+  color-scheme: dark;
+}
+
+a, button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent; /* Press feedback comes from :active instead */
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200; /* Above the comic intro */
+  padding: 0.6rem 1rem;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--accent);
+  color: var(--ink);
+  font-weight: bold;
+  text-decoration: none;
+  translate: 0 -200%;
+}
+
+.skip-link:focus-visible {
+  translate: 0 0;
 }
 
 * {
@@ -76,6 +107,16 @@ p, dd, li {
   text-wrap: pretty;
 }
 
+/* Long words, URLs and emails wrap instead of escaping their box (found by break-ui) */
+.card-body,
+.now-list dd,
+.mashup,
+.mashup-line,
+.contact-section,
+.library-header {
+  overflow-wrap: anywhere;
+}
+
 /* Monospace runs wide: cap prose near 65 characters */
 .about-text > p:not(.kicker):not(.signature):not(.mashup-line),
 .contact-section > p,
@@ -95,6 +136,7 @@ p, dd, li {
 img {
   display: block;
   max-width: 100%;
+  height: auto; /* width/height attributes reserve space; CSS keeps the ratio */
 }
 
 :focus-visible {
@@ -146,10 +188,10 @@ header {
 }
 
 nav a {
-  margin-left: 1.5rem;
+  margin-inline-start: 1.5rem;
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s;
+  transition: color var(--dur-hover) var(--ease-out);
 }
 
 nav a:hover,
@@ -160,7 +202,7 @@ nav a[aria-current="page"] {
 .nav-toggle {
   display: none;
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   border-radius: 5px;
   color: var(--text);
   font-size: 1.25rem;
@@ -169,7 +211,7 @@ nav a[aria-current="page"] {
   cursor: pointer;
 }
 
-/* --- Landing / Greeting --- */
+/* --- Title page (hero) --- */
 .hero {
   position: relative;
   overflow: hidden;
@@ -186,89 +228,6 @@ nav a[aria-current="page"] {
     radial-gradient(ellipse at 15% 100%, rgba(76, 195, 138, 0.18), transparent 55%),
     linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--border);
-}
-
-/* Large, slowly turning 8-point star behind the greeting */
-.hero-star {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(80vw, 620px);
-  aspect-ratio: 1;
-  translate: -50% -55%;
-  background: url(../images/star.svg) center / contain no-repeat;
-  opacity: 0.18;
-  animation: spin 180s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes spin {
-  to { rotate: 360deg; }
-}
-
-.greeting {
-  position: relative;
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 13vw, 8rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: #fff;
-  min-height: 1.1em;
-}
-
-.cursor {
-  display: inline-block;
-  width: 0.06em;
-  height: 0.85em;
-  margin-left: 0.08em;
-  vertical-align: -0.04em;
-  background-color: var(--accent);
-  animation: blink 1s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-.hero-intro {
-  position: relative;
-  margin-top: 1.5rem;
-  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-  max-width: 640px; /* Constrain line length for readability */
-}
-
-.hero-intro strong {
-  color: #fff;
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  translate: -50% 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  letter-spacing: 0.069em;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-.scroll-cue:hover {
-  color: var(--accent);
-}
-
-.scroll-cue .arrow {
-  font-size: 1.5rem;
-  animation: bob 2s ease-in-out infinite;
-}
-
-@keyframes bob {
-  50% { transform: translateY(6px); }
 }
 
 /* --- Ornament divider (line · star · line) --- */
@@ -343,7 +302,7 @@ nav a[aria-current="page"] {
 
 .now-list {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 0.4rem 1.25rem;
   margin-top: 1.75rem;
   padding: 1rem 1.25rem;
@@ -354,8 +313,6 @@ nav a[aria-current="page"] {
 
 .now-list dt {
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   font-size: 0.85rem;
   padding-top: 0.1rem;
 }
@@ -366,8 +323,6 @@ nav a[aria-current="page"] {
   font-size: 0.85rem;
   font-weight: normal;
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .tag-list.interests {
@@ -382,109 +337,6 @@ nav a[aria-current="page"] {
   line-height: 1;
   color: var(--accent);
   text-align: right;
-}
-
-/* --- Two Paths (Technical / Creative) --- */
-.paths {
-  padding: 5rem 0 0;
-}
-
-.paths .section-heading {
-  text-align: center;
-  margin: 2rem 0 3rem;
-}
-
-.split-container {
-  display: flex;
-  min-height: 70vh;
-  border-top: 1px solid var(--border);
-}
-
-.split-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  text-align: center;
-  padding: 4rem 2rem;
-  color: #fff;
-  text-decoration: none;
-  transition: flex 0.5s ease-in-out, background-color 0.5s;
-}
-
-.split-panel.technical {
-  background: radial-gradient(ellipse at 50% 30%, rgba(16, 122, 108, 0.22), transparent 70%), #0d1422;
-}
-
-.split-panel.creative {
-  background: radial-gradient(ellipse at 50% 30%, rgba(217, 119, 6, 0.2), transparent 70%), #16131a;
-  border-left: 2px solid var(--border);
-}
-
-.split-panel:hover {
-  flex: 1.2; /* Slightly grow panel on hover */
-}
-
-.split-content h2 {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.split-panel:hover .btn {
-  background-color: var(--accent-hover);
-}
-
-/* Panel previews */
-.panel-preview {
-  width: min(100%, 400px);
-  transition: transform 0.5s;
-}
-
-.split-panel:hover .panel-preview {
-  transform: translateY(-6px) scale(1.03);
-}
-
-.panel-preview.pages {
-  position: relative;
-  height: 250px;
-}
-
-.panel-preview.pages img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 170px;
-  border-radius: 2px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
-  transition: rotate 0.5s, translate 0.5s;
-}
-
-.panel-preview.pages img:nth-child(1) {
-  translate: -110% 16px;
-  rotate: -9deg;
-}
-
-.panel-preview.pages img:nth-child(2) {
-  translate: -50% 0;
-  rotate: -1deg;
-}
-
-.panel-preview.pages img:nth-child(3) {
-  translate: 10% 16px;
-  rotate: 8deg;
-}
-
-.split-panel:hover .panel-preview.pages img:nth-child(1) {
-  translate: -125% 16px;
-  rotate: -12deg;
-}
-
-.split-panel:hover .panel-preview.pages img:nth-child(3) {
-  translate: 25% 16px;
-  rotate: 11deg;
 }
 
 /* Fake browser / editor window chrome */
@@ -562,25 +414,43 @@ nav a[aria-current="page"] {
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: bold;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  border: 1px solid transparent; /* Same box as .btn-secondary, so paired buttons align */
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color var(--dur-hover) var(--ease-out),
+    border-color var(--dur-hover) var(--ease-out),
+    color var(--dur-hover) var(--ease-out),
+    transform var(--dur-press) var(--ease-out);
 }
 
-.btn:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-secondary {
   background-color: transparent;
   color: var(--text);
-  border: 1px solid var(--border);
+  border-color: var(--border-strong);
 }
 
-.btn-secondary:hover {
-  background-color: transparent;
-  border-color: var(--accent);
-  color: var(--accent);
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn:hover:active {
+    transform: translateY(-2px) scale(0.97);
+  }
+
+  .btn-secondary:hover {
+    background-color: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 
 /* --- Contact Section --- */
@@ -608,7 +478,7 @@ nav a[aria-current="page"] {
 .social-links a {
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--dur-hover) var(--ease-out);
 }
 
 .social-links a:hover {
@@ -623,11 +493,6 @@ footer {
   color: var(--muted);
   background-color: var(--bg);
   border-top: 1px solid var(--border);
-}
-
-/* Target elements for nav link scrolling */
-#about, #work, #contact-section {
-  scroll-margin-top: var(--header-height);
 }
 
 /* --- Sub-pages --- */
@@ -663,12 +528,15 @@ footer {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.3s, transform 0.3s;
+  transition:
+    box-shadow var(--dur-hover) var(--ease-out),
+    transform var(--dur-hover) var(--ease-out);
 }
 
-.card:hover {
-  border-color: var(--accent);
-  transform: translateY(-3px);
+@media (hover: hover) {
+  .card:hover {
+    transform: translate(-2px, -2px);
+  }
 }
 
 .card-preview {
@@ -692,6 +560,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   padding: 1.75rem 2rem 2rem;
+  min-width: 0; /* Flex child: allow it to shrink below its longest word */
 }
 
 .card-title {
@@ -706,8 +575,6 @@ footer {
   color: var(--muted);
   font-size: 0.9rem;
   margin: 0.5rem 0 1.25rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .tag-list {
@@ -774,17 +641,19 @@ footer {
   width: 100%;
   border-radius: 2px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
 }
 
-.script-card:hover .title-page img {
-  transform: translateY(-4px) rotate(-1.5deg);
-  box-shadow: 0 16px 40px rgba(240, 138, 36, 0.25);
+@media (hover: hover) {
+  .script-card:hover .title-page img {
+    transform: translateY(-4px) rotate(-1.5deg);
+    box-shadow: 0 16px 40px rgba(240, 138, 36, 0.25);
+  }
 }
 
 .script-details {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 0.35rem 1rem;
   margin-top: 1.25rem;
   font-size: 0.95rem;
@@ -792,8 +661,6 @@ footer {
 
 .script-details dt {
   color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   font-size: 0.85rem;
   padding-top: 0.1rem;
 }
@@ -817,7 +684,7 @@ body.cinematic {
 }
 
 body.cinematic > main {
-  animation: fade-from-black 1.4s ease-out;
+  animation: fade-from-black 0.6s var(--ease-out);
 }
 
 @keyframes fade-from-black {
@@ -844,27 +711,13 @@ body.cinematic::before {
   100% { transform: translate(0, 0); }
 }
 
-.slugline {
-  font-family: var(--font-body);
-  color: var(--accent);
-  letter-spacing: 0.125em;
-  margin-bottom: 0.75rem;
-}
-
-.fade-out {
-  text-align: right;
-  max-width: 960px;
-  margin: 4rem auto 0;
-  color: var(--muted);
-  letter-spacing: 0.125em;
-}
-
 /* --- PDF Modal --- */
 .pdf-modal {
   width: 90%;
   max-width: 1000px;
-  height: 80vh;
+  height: 80dvh;
   margin: auto;
+  overscroll-behavior: contain;
   padding: 0;
   background-color: var(--surface);
   color: var(--text);
@@ -872,12 +725,35 @@ body.cinematic::before {
   border-radius: 8px;
 }
 
-.pdf-modal[open] {
-  animation: modal-in 0.35s ease-out;
+.pdf-modal,
+.pdf-modal::backdrop {
+  opacity: 0;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 180ms var(--ease-out),
+    overlay 180ms allow-discrete,
+    display 180ms allow-discrete;
 }
 
-@keyframes modal-in {
-  from { opacity: 0; transform: scale(0.97); }
+.pdf-modal {
+  transform: scale(0.97);
+}
+
+.pdf-modal[open],
+.pdf-modal[open]::backdrop {
+  opacity: 1;
+  transform: none;
+  transition-duration: 250ms; /* Enter a little slower than exit */
+}
+
+@starting-style {
+  .pdf-modal[open],
+  .pdf-modal[open]::backdrop {
+    opacity: 0;
+  }
+  .pdf-modal[open] {
+    transform: scale(0.97);
+  }
 }
 
 /* Letterbox bars top and bottom, like a widescreen frame */
@@ -920,13 +796,13 @@ body.cinematic::before {
 .modal-actions button {
   background: none;
   border: none;
-  color: #aaa;
+  color: var(--muted);
   font-family: var(--font-body);
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color var(--dur-hover) var(--ease-out);
 }
 
 .modal-actions .close-button {
@@ -973,7 +849,7 @@ body.cinematic::before {
   }
 
   nav a {
-    margin-left: 0;
+    margin-inline-start: 0;
     padding: 0.6rem 0;
     border-top: 1px solid var(--border);
   }
@@ -1004,42 +880,12 @@ body.cinematic::before {
   }
 
   .about-text h2,
-  .section-heading,
-  .split-content h2,
-  .contact-section h2 {
+.section-heading,
+.contact-section h2 {
     font-size: 2rem;
   }
 
-  .paths {
-    padding-top: 3rem;
-  }
-
-  .split-container {
-    flex-direction: column;
-  }
-
-  .split-panel {
-    padding: 3rem 16px;
-  }
-
-  .split-panel:hover {
-    flex: 1;
-  }
-
-  .split-panel.creative {
-    border-left: none;
-    border-top: 2px solid var(--border);
-  }
-
-  .panel-preview.pages {
-    height: 200px;
-  }
-
-  .panel-preview.pages img {
-    width: 130px;
-  }
-
-  .contact-section {
+.contact-section {
     padding: 4rem 16px;
   }
 
@@ -1072,19 +918,6 @@ body.cinematic::before {
   .title-page img {
     width: 180px;
   }
-
-  .fade-out {
-    text-align: center;
-  }
-}
-
-/* --- Hero extras --- */
-.hero-sub {
-  position: relative;
-  margin-top: 0.75rem;
-  color: var(--green);
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  max-width: 640px;
 }
 
 .hero-actions {
@@ -1143,8 +976,6 @@ body.cinematic::before {
 .card-kind {
   color: var(--muted);
   font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.078em;
   margin-bottom: 0.25rem;
 }
 
@@ -1177,11 +1008,13 @@ body.cinematic::before {
   max-width: none;
   border-radius: 2px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-  transition: transform 0.4s;
+  transition: transform 300ms var(--ease-out);
 }
 
-.card:hover .work-thumb img {
-  transform: translateY(-4px) rotate(-1.5deg);
+@media (hover: hover) {
+  .card:hover .work-thumb img {
+    transform: translateY(-4px) rotate(-1.5deg);
+  }
 }
 
 .footer-line {
@@ -1208,7 +1041,7 @@ body.cinematic::before {
 :root {
   --font-comic: 'Bangers', 'Impact', sans-serif;
   --paper: #F4ECD8;
-  --ink: #0B0B0B;
+  --ink: #000;
 }
 
 /* --- Intro overlay --- */
@@ -1232,7 +1065,7 @@ body.cinematic::before {
     radial-gradient(circle, rgba(76, 195, 138, 0.2) 1.6px, transparent 1.7px) 0 0 / 14px 14px,
     radial-gradient(ellipse at 50% 45%, #15281f, var(--bg-deep) 75%);
   cursor: pointer;
-  animation: intro-out 0.45s ease-in var(--t-exit) forwards;
+  animation: intro-out 0.45s var(--ease-out) var(--t-exit) forwards;
 
   /* One timeline for the whole opening. Greetings speed up as they come
      (gaps 400 → 340 → 290ms) so they read as a wave, not a metronome.
@@ -1250,7 +1083,7 @@ body.cinematic::before {
 }
 
 .comic-intro.leaving {
-  animation: intro-out 0.4s ease-in forwards;
+  animation: intro-out 0.3s var(--ease-out) forwards;
 }
 
 @keyframes intro-out {
@@ -1260,14 +1093,14 @@ body.cinematic::before {
 .intro-stage {
   position: relative;
   width: min(92vw, 960px);
-  height: min(84vh, 640px);
+  height: min(84dvh, 640px);
 }
 
 /* Greetings pop in one by one, then get swept away */
 .intro-boxes {
   position: absolute;
   inset: 0;
-  animation: boxes-away 0.3s ease-in var(--t-sweep) forwards;
+  animation: boxes-away 0.3s var(--ease-out) var(--t-sweep) forwards;
 }
 
 @keyframes boxes-away {
@@ -1281,8 +1114,7 @@ body.cinematic::before {
   letter-spacing: 0.018em;
   line-height: 1.05;
   color: var(--ink);
-  opacity: 0;
-  animation: pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) forwards;
+  animation: pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) both;
 }
 
 @keyframes pop {
@@ -1358,8 +1190,7 @@ body.cinematic::before {
 
 /* Burst lines behind the splash: decoration, fades in on the slam's impact */
 .intro-splash::before {
-  opacity: 0;
-  animation: fade-in 0.25s ease-out var(--t-impact) forwards;
+  animation: fade-in 0.25s var(--ease-out) var(--t-impact) both;
   content: "";
   position: absolute;
   left: 50%;
@@ -1374,20 +1205,19 @@ body.cinematic::before {
 }
 
 @keyframes fade-in {
+  from { opacity: 0; }
   to { opacity: 1; }
 }
 
 .splash-bubble {
   max-width: min(86vw, 560px);
   font-size: clamp(1rem, 2.6vw, 1.25rem);
-  opacity: 0;
   --s: 0.6; /* support: travels less than the name */
-  animation: pop 0.4s cubic-bezier(0.3, 1.6, 0.5, 1) var(--t-bubble) forwards;
+  animation: pop 0.4s cubic-bezier(0.3, 1.6, 0.5, 1) var(--t-bubble) both;
 }
 
 .intro-splash .name-callout {
-  opacity: 0;
-  animation: slam 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) var(--t-slam) forwards;
+  animation: slam 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) var(--t-slam) both;
 }
 
 @keyframes slam {
@@ -1397,8 +1227,7 @@ body.cinematic::before {
 }
 
 .intro-splash .callout-sig {
-  opacity: 0;
-  animation: sign 0.5s ease-out var(--t-stamp) forwards;
+  animation: sign 0.5s var(--ease-out) var(--t-stamp) both;
 }
 
 @keyframes sign {
@@ -1467,7 +1296,7 @@ body.cinematic::before {
 }
 
 @media (max-width: 768px) {
-  .intro-stage { height: 80vh; }
+  .intro-stage { height: 80dvh; }
   .b1 { top: 6%;  left: 2%; }
   .b2 { top: 28%; right: 2%; }
   .b3 { top: 50%; left: 4%; }
@@ -1582,8 +1411,15 @@ body.cinematic::before {
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
 }
 
-.card:hover {
-  box-shadow: 6px 6px 0 var(--accent);
+@media (hover: hover) {
+  .card:hover {
+    box-shadow: 8px 8px 0 var(--accent);
+  }
+}
+
+/* Script cards don't lift: their title page tilts instead. Must follow the hover rules above. */
+.script-card:hover {
+  transform: none;
 }
 
 .replay-link {
