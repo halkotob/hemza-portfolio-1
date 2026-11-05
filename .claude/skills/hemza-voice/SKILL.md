@@ -1,64 +1,50 @@
 ---
 name: hemza-voice
-description: Hemza Alkotob's portfolio voice and comic-book design language. Use whenever writing or editing any copy, section, page, card, or visual element on this site — new projects, scripts, bios, headings, buttons, alt text, meta descriptions, error or empty states — or when another design skill's advice might flatten the site's personality. Triggers on "add a project", "write copy", "new section", "rewrite", "make it sound like me", "on brand", "personality", "voice".
+description: Hemza Alkotob's portfolio voice and the v2 "reading desk" design rules. Use whenever writing or editing copy, sections, scripts, projects, bios, headings, buttons, alt text or meta descriptions on this site, or when another design skill's advice might flatten its personality. Triggers on "add a script", "add a project", "write copy", "new section", "rewrite", "make it sound like me", "on brand", "personality", "voice".
 ---
 
-# Hemza's voice and the comic-book system
+# Hemza's voice and the reading desk
 
-This site is a comic book about one person: a Muslim Syrian-American cloud engineer and screenwriter from Detroit who loves mash-ups. Every change should read like a new page in the same issue. Other skills (typography, UI, animation) own the craft. This one owns the character. When they conflict on tone, this wins; when they conflict on correctness or accessibility, they win.
+The site is a reading desk: a visitor should be reading Hemza's actual writing within five seconds. The full brief is `docs/design/BRIEF.md`, the system is `docs/design/DESIGN.md`, and the structure is `docs/design/information-architecture.md`. Read the brief before any visual change. Other skills own craft: typography, UI, animation, accessibility. This one owns character. It wins on tone. They win on correctness and accessibility.
 
 ## Who is talking
 
-First person, warm, plain, a little playful. Confident without bragging. A film nerd who also gets paged at 3am.
+First person, conversational, peer to peer. A writer talking to another writer, an engineer talking to a teammate.
 
-- Short sentences. Concrete nouns. Real numbers when they exist ("75+ hosted client environments", not "many clients").
-- Enthusiasm is shown through specifics, never adjectives like "passionate", "innovative", "cutting-edge", "seamless", "leverage".
-- Faith and heritage are stated plainly and proudly, never explained or apologized for.
-- Humor comes from juxtaposition, not jokes: "Carmy calls out on the day a food critic is coming."
-- Mysteries and clues are the throughline: "looking for clues that lead to a larger truth", root-causing outages like breaking a pilot.
+- Short sentences with concrete nouns. True numbers from the résumé go inside sentences ("75+ AWS environments… at 99.9% availability"), never in a stat strip.
+- Show enthusiasm through specifics. Never use "passionate", "innovative", "leverage", "seamless", "cutting-edge" or "synergy", and never open with "I am a … who …".
+- State faith and heritage plainly. Don't explain them.
+- Humor comes from juxtaposition and the work itself (a kitchen full of bears), not from jokes in the chrome.
+- Follow `stop-slop`: cut adverbs in site copy, use active voice, avoid "not X, it's Y", vary sentence rhythm, avoid pull-quote lines. Site copy avoids em dashes. Screenplay excerpts are his text and stay as written.
 
-Real lines to calibrate against:
+Calibration lines:
 
-> I'm a proud Muslim Syrian-American, a film nerd with a computer science degree, and a big believer in mash-ups.
-> Hiring for a cloud team, making something with a story in it, or just want to trade movie recs? I'd love to hear from you.
-> Nothing matters until you know what matters.
+> I write for TV and film, and I run cloud infrastructure at Alfa. Detroit is home.
+> When production breaks, I run the root-cause analysis and write the recovery runbook, so it doesn't break the same way twice.
+> Hiring for a cloud team, making something with a story in it, or want to trade movie recs? Email me.
 
-## The mash-up formula (required on every work card)
+## Adding a script
 
-Every project gets a one-line mash-up in the form `X <em>meets</em> Y`, in the `.mashup` element:
+1. Pick the next revision color in industry order: white, blue, pink, yellow, green, goldenrod (blue, pink and yellow are taken). Add it as a `--rev-*` token.
+2. Add a tab (`role="tab"`, with `aria-controls` pointing at both the details panel and the page panel), a details panel, and a page panel. Copy an existing set.
+3. Write the details: a meta sentence (format, genre, runtime, pages, comps), a logline (protagonist, situation, stakes, in present tense), "Read the first 10 pages" and "Full script (N pages)".
+4. Set page one as text: `pdftotext -layout -f 1 -l 1 file.pdf -`, then mark it up with `sp-scene`, `sp-action`, `sp-char`, `sp-dialogue` and `sp-transition-in`. Run about 25 lines so the text reaches past the fade. Never print a page number on page one.
+5. Fix obvious typos in the excerpt only, and tell Hemza. The PDF stays as it is.
 
-- Comps for scripts use `<cite>`: `<cite>30 Rock</cite> <em>meets</em> <cite>GLOW</cite>`.
-- Concepts for games and code use plain words: `Masjid league <em>meets</em> arcade basketball`.
-- Then a one- or two-sentence logline in `.card-logline`: protagonist + inciting situation + what's at stake. Present tense. No "This project is…".
+## Adding a game or other project
 
-Card kind labels are short and literal: `Game`, `TV Spec`, `TV Pilot`, `Feature`, `Terminal Game`.
+The newest or strongest one is the `.feature`: a real screenshot or capture, never a fake window. The rest go in `.minor-list` as title, year and one sentence.
 
-## Comic-book structure
+## Visual rules (v2)
 
-The page is an issue. Keep the metaphor consistent and don't overuse it:
-
-- Hero is the title page (`Issue #1 · Detroit, MI`).
-- Sections are chapters with a `.kicker`: `Chapter 1 · Origin story`, `Chapter 2 · The collected works`. A new section gets the next chapter number and a two-to-four-word comic-flavored subtitle.
-- Contact is `Next issue…`. Footer offers to "Read the opening again".
-- Speech bubbles (`.speech`) are Hemza talking. Caption boxes (`.caption-box`) are the narrator stating facts. Never put résumé facts in a speech bubble or jokes in a caption box.
-- At most one or two comic devices per section. The comic layer frames the work; it never buries it.
-
-## Visual language
-
-- Palette tokens only (`--bg`, `--surface`, `--accent` orange, `--green`, `--ink`, `--paper`). No new hues without updating `:root`.
-- Fonts have jobs: Bangers (`--font-comic`) for lettering, callouts, and SFX only; Playfair Display for headings; Courier Prime for body, a nod to screenplay format; Aref Ruqaa for the Arabic signature حمزة. Don't add a fifth family.
-- Arabic text always carries `lang="ar" dir="rtl"`; decorative instances also get `aria-hidden="true"` with the English nearby.
-- Comic lettering is tilted (−2° to −8°), hard offset shadows (`3px 3px 0 var(--ink)`), no blur shadows on comic elements.
-- The Damascene star pattern stays subtle (opacity ≈ 0.035). Heritage is texture, not wallpaper.
-
-## Motion
-
-Motion is part of the comic: pops, slams, stamps. It plays once per visit on the intro, and is quiet elsewhere. Use the `choreograph` and `animate` skills for timing; the intro's timeline lives in CSS custom properties on `.comic-intro` (`--t-*`), so retime there, not in JS. Every effect must collapse under `prefers-reduced-motion`.
+- Color has a job. Revision paper marks scripts, pen blue (`--pen`) marks actions only, and everything else is black on white. Never add a hue without a job.
+- Archivo is the only interface face. Use the width axis for hierarchy (`font-stretch: 68%` at weight 800 for display). Courier Prime is for screenplay text only.
+- No all-caps labels, no middle-dot meta strings, no arrows on links, no icons, no pills, no card grids, no decorative numbering, no backdrop blur, no dark mode. Run `avoid-ai-design` on any visual change.
+- One moment of motion: a clicked tab brings its page in from behind. Keyboard switching is instant. Nothing animates on scroll.
 
 ## Before you finish
 
-- Does every new string sound like the calibration lines above? Read it aloud.
-- Curly quotes and apostrophes in rendered text (’ “ ”), em dashes for breaks.
-- Did a new work card get kind + mash-up + logline + a primary action?
-- Are facts in captions and voice in bubbles?
-- Any banned words (passionate, innovative, leverage, seamless, cutting-edge, synergy, "I am a … who …" openers)?
+- Does every new string sound like the calibration lines? Read it aloud.
+- Curly quotes and apostrophes in rendered text.
+- Is any new label carrying information the heading doesn't? If not, cut it.
+- Did `avoid-ai-design`'s checks still pass (see `CLAUDE.md`)?

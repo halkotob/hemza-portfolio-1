@@ -1,234 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hemza Alkotob | Cloud Engineer &amp; Screenwriter</title>
-  <meta name="description" content="Hemza Alkotob is a cloud engineer and screenwriter in Detroit. AWS infrastructure by trade, TV and features by heart. Scripts, games, and code.">
-  <!-- TODO: update these URLs if the site moves to a custom domain -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hemza Alkotob: TV writer and cloud engineer</title>
+  <meta name="description" content="Hemza Alkotob writes for TV and film and runs cloud infrastructure in Detroit. Read the first page of his scripts, see the engineering work, play his games.">
+  <link rel="canonical" href="https://halkotob.github.io/hemza-portfolio-1/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Hemza Alkotob | Cloud Engineer &amp; Screenwriter">
-  <meta property="og:description" content="Cloud engineer and screenwriter. Scripts, games, and the systems that carry stories to people.">
+  <meta property="og:title" content="Hemza Alkotob: TV writer and cloud engineer">
+  <meta property="og:description" content="Read the first page of his scripts, see the engineering work, play his games.">
   <meta property="og:url" content="https://halkotob.github.io/hemza-portfolio-1/">
-  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/films.jpg">
+  <meta property="og:image" content="https://halkotob.github.io/hemza-portfolio-1/images/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0E1714">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="color-scheme" content="light">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Bangers&family=Playfair+Display:wght@700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@68..100,400..800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script>
-    // Comic intro: first visit only (or ?intro to replay). Skipped for reduced motion.
-    (function () {
-      try {
-        var replay = /[?&]intro\b/.test(location.search);
-        var seen = localStorage.getItem('ha-intro-seen');
-        var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if ((replay || !seen) && !still) document.documentElement.classList.add('intro-on');
-      } catch (e) {}
-    })();
-  </script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <!-- Comic book intro: cover opens, camera moves panel to panel, lands on the title page -->
-  <div id="comic-intro" class="comic-intro">
-    <div class="intro-stage" aria-hidden="true">
-      <div class="intro-boxes">
-        <span class="ibox thought b1">Hello there!</span>
-        <span class="ibox torn b2">Marhaba!</span>
-        <span class="ibox thought b3">Salam!</span>
-        <span class="ibox torn b4">Welcome, wherever you came from!</span>
-      </div>
-      <div class="intro-splash">
-        <span class="speech splash-bubble">I’m Hemza Alkotob, and you’re looking at my personal portfolio.</span>
-        <span class="name-callout">
-          <span class="callout-sig" lang="ar" dir="rtl">حمزة</span>
-          <span class="callout-name" translate="no">Hemza Alkotob</span>
-          <span class="callout-role">Cloud Engineer &amp; Screenwriter</span>
-        </span>
-      </div>
-    </div>
-    <button type="button" class="intro-skip">Skip &rsaquo;</button>
-  </div>
-  <header>
-    <div class="logo"><a href="index.html"><span class="logo-ar" lang="ar" dir="rtl" aria-hidden="true">حمزة</span><span translate="no">Hemza Alkotob</span></a></div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">&#9776;</button>
-    <nav id="site-nav">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="pdfs/hemza-alkotob-resume.pdf" target="_blank" rel="noopener">Resume</a>
-      <a href="#contact-section">Contact</a>
+
+  <header class="site-header">
+    <nav aria-label="Sections">
+      <ul class="nav-list">
+        <li><a href="#scripts">Scripts</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
+    <a class="resume-link" href="pdfs/hemza-alkotob-resume.pdf" target="_blank" rel="noopener">Résumé<span class="sr-only"> (PDF, opens in a new tab)</span></a>
   </header>
 
   <main id="main">
-    <!-- Title page: where the comic intro lands -->
-    <section class="hero">
-      <p class="issue-tag">Issue #1 &middot; Detroit, MI</p>
-      <h1 class="name-callout hero-callout">
-        <span class="callout-sig" lang="ar" dir="rtl" aria-hidden="true">حمزة</span>
-        <span class="callout-name" translate="no">Hemza Alkotob</span>
-      </h1>
-      <p class="hero-role">Cloud Engineer <span>&amp;</span> Screenwriter</p>
-      <p class="caption-box hero-summary">Cloud engineer with 2+ years running AWS infrastructure for 75+ hosted client environments: Terraform, CloudFormation, CI/CD, and on-call. Screenwriter with dual degrees in Computer Science and Film from the University of Michigan.</p>
-      <p class="speech hero-bubble">In this issue: scripts, games, and the systems behind them. Either way, I’m looking for clues that lead to a larger truth.</p>
-      <div class="hero-actions">
-        <a href="#work" class="btn">See the work</a>
-        <a href="pdfs/hemza-alkotob-resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">Resume</a>
+    <!-- Scripts: the hero is a reading desk. Each tab controls two regions: details on the left, page one on the right. -->
+    <section id="scripts" class="desk" aria-labelledby="name">
+      <div class="desk-intro">
+        <h1 id="name" class="name" translate="no">Hemza Alkotob</h1>
+        <p class="lede">I write for TV and film, and I run cloud infrastructure at Alfa. Detroit is home.</p>
       </div>
-    </section>
 
-    <section id="about" class="about-section">
-      <!-- TODO: swap this placeholder for a headshot, e.g.
-           <img class="about-photo" src="images/headshot.jpg" alt="Hemza Alkotob"> -->
-      <div class="about-photo placeholder" aria-hidden="true">HA</div>
-      <div class="about-text">
-        <p class="kicker">Chapter 1 &middot; Origin story</p>
-        <h2>About Me</h2>
-        <p>I’m a proud Muslim Syrian-American, a film nerd with a computer science degree, and a big believer in mash-ups.</p>
-        <p class="mashup-line" aria-label="Syrian meets American. Film meets code. Left brain meets right brain.">
-          <span>Syrian <em>meets</em> American</span>
-          <span>Film <em>meets</em> code</span>
-          <span>Left brain <em>meets</em> right brain</span>
-        </p>
-        <p>I love characters, mysteries, and the moment the pieces click into place. That’s true whether I’m breaking a pilot or tracking down the root cause of a production outage.</p>
-        <p>More than anything, I love creating stories that matter, with people I care about, in whatever medium brings them to life best.</p>
-
-        <dl class="now-list">
-          <dt>Day job</dt>
-          <dd>Cloud Engineer at Alfa, running AWS infrastructure for 75+ hosted client environments with Terraform, CloudFormation, and Jenkins</dd>
-          <dt>Building</dt>
-          <dd><a href="code.html">IslamDunk</a>, a 2v2 arcade basketball game with a career mode and online play</dd>
-          <dt>Latest script</dt>
-          <dd><a href="films.html">The Bear: “Press”</a>, a spec episode</dd>
-          <dt>Watching</dt>
-          <dd><a href="https://boxd.it/16jOV" target="_blank" rel="noopener">My Letterboxd</a></dd>
-        </dl>
-
-        <h3 class="interests-heading">Found all over my work</h3>
-        <ul class="tag-list interests">
-          <li>Pro wrestling</li>
-          <li>Star Wars</li>
-          <li>Restaurant kitchens</li>
-          <li>Basketball</li>
-          <li>Knights &amp; fantasy</li>
-          <li>Superheroes &amp; comics</li>
-          <li>Mysteries &amp; secrets</li>
-          <li>Faith &amp; heritage</li>
-        </ul>
-
-        <p class="signature" lang="ar" dir="rtl" aria-label="Signed, Hemza">حمزة</p>
+      <div class="desk-index">
+        <h2 class="index-heading" id="scripts-heading">Scripts</h2>
+        <p class="index-hint" id="scripts-hint">Pick one to read its first page.</p>
+        <div class="tabs" role="tablist" aria-labelledby="scripts-heading" aria-describedby="scripts-hint" aria-orientation="vertical">
+          <button class="tab" type="button" role="tab" id="tab-the-bear" data-slug="the-bear" aria-selected="true" aria-controls="details-the-bear page-the-bear" style="--rev: var(--rev-blue)">
+            <span class="tab-title">The Bear: “Press”</span>
+            <span class="tab-kind">TV spec</span>
+          </button>
+          <button class="tab" type="button" role="tab" id="tab-the-squared-circle" data-slug="the-squared-circle" aria-selected="false" tabindex="-1" aria-controls="details-the-squared-circle page-the-squared-circle" style="--rev: var(--rev-pink)">
+            <span class="tab-title">The Squared Circle</span>
+            <span class="tab-kind">TV pilot</span>
+          </button>
+          <button class="tab" type="button" role="tab" id="tab-chivalrys-not-dead" data-slug="chivalrys-not-dead" aria-selected="false" tabindex="-1" aria-controls="details-chivalrys-not-dead page-chivalrys-not-dead" style="--rev: var(--rev-yellow)">
+            <span class="tab-title">Chivalry’s Not Dead</span>
+            <span class="tab-kind">Feature</span>
+          </button>
+        </div>
       </div>
-    </section>
 
-    <div class="ornament" aria-hidden="true"><span></span></div>
+      <div class="desk-details">
+        <div class="details" role="tabpanel" id="details-the-bear" aria-labelledby="tab-the-bear">
+          <p class="details-meta">Spec episode of <cite>The Bear</cite> (FX). Comedy-drama, 30 minutes, 37 pages.</p>
+          <p class="logline">With his hand shaking and his head somewhere else, Carmy calls out of work on the same day Richie invites a food critic. While Sydney fights to hold the kitchen together, Carmy wanders Chicago trying to remember why he cooks.</p>
+          <p class="actions">
+            <a class="button pdf-link" href="pdfs/the-bear-press-spec-first-10.pdf" target="_blank" rel="noopener" data-title="The Bear: “Press”, first 10 pages">Read the first 10 pages</a>
+            <a class="text-link pdf-link" href="pdfs/the-bear-press-spec.pdf" target="_blank" rel="noopener" data-title="The Bear: “Press”">Full script (37 pages)</a>
+          </p>
+        </div>
+        <div class="details" role="tabpanel" id="details-the-squared-circle" aria-labelledby="tab-the-squared-circle" hidden>
+          <p class="details-meta">Original pilot. Comedy, 30 minutes, 26 pages. Comps: <cite>30 Rock</cite> and <cite>GLOW</cite>.</p>
+          <p class="logline">Freddie, a struggling screenwriter with a college degree and no credits, gets his big break writing for the WWE. Now he has to find the art in the absurd world of professional wrestling.</p>
+          <p class="actions">
+            <a class="button pdf-link" href="pdfs/the-squared-circle-pilot-first-10.pdf" target="_blank" rel="noopener" data-title="The Squared Circle, first 10 pages">Read the first 10 pages</a>
+            <a class="text-link pdf-link" href="pdfs/the-squared-circle-pilot.pdf" target="_blank" rel="noopener" data-title="The Squared Circle">Full script (26 pages)</a>
+          </p>
+        </div>
+        <div class="details" role="tabpanel" id="details-chivalrys-not-dead" aria-labelledby="tab-chivalrys-not-dead" hidden>
+          <p class="details-meta">Feature. Adventure fantasy, 97 pages. Comps: <cite>Hunt for the Wilderpeople</cite> and <cite>Kate &amp; Leopold</cite>.</p>
+          <p class="logline">Alex lands back in the foster system and accidentally summons a knight from out of time. Together they hunt for a way to send him home.</p>
+          <p class="actions">
+            <a class="button pdf-link" href="pdfs/chivalrys-not-dead-first-10.pdf" target="_blank" rel="noopener" data-title="Chivalry’s Not Dead, first 10 pages">Read the first 10 pages</a>
+            <a class="text-link pdf-link" href="pdfs/chivalrys-not-dead.pdf" target="_blank" rel="noopener" data-title="Chivalry’s Not Dead">Full script (97 pages)</a>
+          </p>
+        </div>
+      </div>
 
-    <!-- One body of work: scripts and code side by side -->
-    <section id="work" class="work-section" aria-labelledby="work-heading">
-      <p class="kicker">Chapter 2 &middot; The collected works</p>
-      <h2 id="work-heading" class="section-heading">The Work</h2>
-      <p class="section-intro">Scripts and software, side by side. Every one is a mash-up of something.</p>
-
-      <div class="card-grid work-grid">
-        <article class="card">
-          <a href="https://halkotob.github.io/IslamDunk/" class="card-preview" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-            <div class="window">
-              <div class="window-bar"><i></i><i></i><i></i><em>halkotob.github.io/IslamDunk</em></div>
-              <picture>
-                <source srcset="images/projects/islamdunk-gameplay.jpg" media="(prefers-reduced-motion: reduce)">
-                <img width="640" height="360" src="images/projects/islamdunk-gameplay.webp" alt="" loading="lazy">
-              </picture>
-            </div>
-          </a>
-          <div class="card-body">
-            <div class="card-info">
-              <p class="card-kind">Game</p>
-              <h3 class="card-title">IslamDunk</h3>
-              <p class="mashup">Masjid league <em>meets</em> arcade basketball</p>
-              <p class="card-logline">A 2v2 arcade basketball game with masjid-league teams, a career mode, and online play. Runs in the browser, phones included.</p>
-            </div>
-            <div class="card-actions">
-              <a href="https://halkotob.github.io/IslamDunk/" class="btn" target="_blank" rel="noopener">Play</a>
-              <a href="code.html" class="btn btn-secondary">All code</a>
-            </div>
+      <div class="desk-pages">
+        <!-- Page one of each script, as text. Revision paper color marks the script. -->
+        <article class="page" role="tabpanel" tabindex="0" id="page-the-bear" aria-labelledby="tab-the-bear" style="--rev: var(--rev-blue)">
+          <div class="sp" lang="en">
+            <p class="sp-scene">INT. THE BEAR/KITCHEN</p>
+            <p class="sp-action">Carmy preps for dinner service in the kitchen. He’s focused; the only thing he can see is the food he’s preparing in front of him.</p>
+            <p class="sp-action">His RIGHT HAND starts to TREMBLE, but he pushes through.</p>
+            <p class="sp-action">CHOP. CHOP. CHOP. FLASH.</p>
+            <p class="sp-scene">INT. THE BEAR/KITCHEN - DINING AREA</p>
+            <p class="sp-action">Suddenly, Carmy’s serving a dish table-side. Again, all he can see is the food in front of him. Everything seems normal until he places the dishes in front of his customers and we see that they’re ALL BEARS.</p>
+            <p class="sp-action">He stutters when he notices, but shrugs it off. He goes back into the kitchen quickly to ask what’s going on.</p>
+            <p class="sp-scene">INT. THE BEAR/KITCHEN - CONTINUOUS</p>
+            <p class="sp-action">The doors fly open and Carmy starts to talk, but the room is EMPTY.</p>
+            <p class="sp-action">He’s befuddled, but not long before orders come flying in, and suddenly he’s BACK TO COOKING on his own.</p>
+            <p class="sp-action">Now he’s racing against the CLOCK--</p>
+            <p class="sp-action">TICKING, COUNTING DOWN, PRESSING HIM--</p>
+            <p class="sp-action">But he can’t keep up. He’s getting messy, slipping up, FALTERING.</p>
+            <p class="sp-action">His HAND is SHAKING UNCONTROLLABLY.</p>
+            <p class="sp-action">The CLOCK moves FASTER.</p>
+            <p class="sp-action">One of the “customers” BARGES into the kitchen. It SNARLS and SWIPES items off the counters, slowly APPROACHING.</p>
           </div>
+          <a class="page-continue pdf-link" href="pdfs/the-bear-press-spec-first-10.pdf" target="_blank" rel="noopener" data-title="The Bear: “Press”, first 10 pages" tabindex="-1" aria-hidden="true">Keep reading</a>
         </article>
 
-        <article class="card">
-          <a href="films.html" class="card-preview work-thumb" tabindex="-1" aria-hidden="true">
-            <img width="600" height="777" src="images/scripts/the-bear-press-spec-title.jpg" alt="" loading="lazy">
-          </a>
-          <div class="card-body">
-            <div class="card-info">
-              <p class="card-kind">TV Spec</p>
-              <h3 class="card-title">The Bear: “Press”</h3>
-              <p class="mashup">A kitchen in crisis <em>meets</em> a walk through Chicago</p>
-              <p class="card-logline">Carmy calls out on the day a food critic is coming, and wanders the city trying to remember why he cooks.</p>
-            </div>
-            <div class="card-actions">
-              <a href="films.html" class="btn">Read</a>
-            </div>
+        <article class="page" role="tabpanel" tabindex="0" id="page-the-squared-circle" aria-labelledby="tab-the-squared-circle" style="--rev: var(--rev-pink)" hidden>
+          <div class="sp" lang="en">
+            <p class="sp-transition-in">BLACK.</p>
+            <p class="sp-action">Then, the roar of crowd fades in, and --</p>
+            <p class="sp-scene">INT. LITTLE CAESAR’S ARENA - WWE PAY PER VIEW</p>
+            <p class="sp-action">Lights shine on thousands of fans cheering on as TWO MEN beat the crap out of each other half naked in a ring in the middle of the arena.</p>
+            <p class="sp-char">MIKE ASH (O.C.)</p>
+            <p class="sp-dialogue">If you’re just joining us now, we are LIVE! In a sold out arena as everyone’s favorite champion, Max Freedom, defends his title against the man who is willing to do whatever it takes to ruin his life, Renegade.</p>
+            <p class="sp-action">MAX FREEDOM (Uncle Sam with muscles) is passed out on the canvas while RENEGADE (every bully you’ve ever known), exhausted, tries to move towards his opponent.</p>
+            <p class="sp-char">MIKE ASH (O.C.) (CONT’D)</p>
+            <p class="sp-dialogue">Both men are down! This is still anyone’s match!</p>
+            <p class="sp-action">Renegade manages to get to his knees and pulls Max up with him.</p>
+            <p class="sp-action">BOOM! Renegade throws a punch. POW! Max answers. They trade blows as the crowd “oohs” and “ahhs” with every hit.</p>
+            <p class="sp-action">Max jumps up for an acrobatic move, but when he lands --</p>
+            <p class="sp-action">POP!</p>
+            <p class="sp-char">MAX</p>
+            <p class="sp-dialogue">OW! SHIT! I think I just broke my knee!</p>
+            <p class="sp-char">REFEREE</p>
+            <p class="sp-dialogue">Shut up and wrestle, kid.</p>
           </div>
+          <a class="page-continue pdf-link" href="pdfs/the-squared-circle-pilot-first-10.pdf" target="_blank" rel="noopener" data-title="The Squared Circle, first 10 pages" tabindex="-1" aria-hidden="true">Keep reading</a>
         </article>
 
-        <article class="card">
-          <a href="films.html" class="card-preview work-thumb" tabindex="-1" aria-hidden="true">
-            <img width="600" height="777" src="images/scripts/the-squared-circle-pilot-title.jpg" alt="" loading="lazy">
-          </a>
-          <div class="card-body">
-            <div class="card-info">
-              <p class="card-kind">TV Pilot</p>
-              <h3 class="card-title">The Squared Circle</h3>
-              <p class="mashup"><cite>30 Rock</cite> <em>meets</em> <cite>GLOW</cite></p>
-              <p class="card-logline">A struggling screenwriter gets his big break writing for pro wrestling, and has to find the art in the absurd.</p>
-            </div>
-            <div class="card-actions">
-              <a href="films.html" class="btn">Read</a>
-            </div>
+        <article class="page" role="tabpanel" tabindex="0" id="page-chivalrys-not-dead" aria-labelledby="tab-chivalrys-not-dead" style="--rev: var(--rev-yellow)" hidden>
+          <div class="sp" lang="en">
+            <p class="sp-scene">INT. FAIRYTALE LAND - CASTLE DINING HALL - DINNER</p>
+            <p class="sp-action">We open on a grand dining hall where three people eat dinner together.</p>
+            <p class="sp-action">A KING, (50s), sits at the head of the table, and speaks with confidence and an air of self-righteousness.</p>
+            <p class="sp-char">KING MERAS</p>
+            <p class="sp-dialogue">Today, I met with my advisors about building a new wing to this castle - what do you all think we should name it?</p>
+            <p class="sp-action">A QUEEN, (50s), sitting to King Meras’s right, is kind, but knows how to get the best out of her husband.</p>
+            <p class="sp-char">QUEEN LILLIAN</p>
+            <p class="sp-dialogue">I think naming it after someone in our lineage would be splendid, as long as that someone isn’t you.</p>
+            <p class="sp-action">A PRINCESS, (20s), laughs, sitting opposite Queen Lillian. She has her mother’s sense of humor, and her father’s boldness.</p>
+            <p class="sp-char">PRINCESS SHELBY</p>
+            <p class="sp-dialogue">Let’s be fair, we’ve never named something after the best King this land was ruled by.</p>
+            <p class="sp-char">KING MERAS</p>
+            <p class="sp-dialogue">Thank you, dear.</p>
+            <p class="sp-char">PRINCESS SHELBY</p>
+            <p class="sp-dialogue">We should name it after mother’s father.</p>
+            <p class="sp-action">The women laugh as King Meras sits there livid.</p>
           </div>
-        </article>
-
-        <article class="card">
-          <a href="films.html" class="card-preview work-thumb" tabindex="-1" aria-hidden="true">
-            <img width="600" height="777" src="images/scripts/chivalrys-not-dead-title.jpg" alt="" loading="lazy">
-          </a>
-          <div class="card-body">
-            <div class="card-info">
-              <p class="card-kind">Feature</p>
-              <h3 class="card-title">Chivalry’s Not Dead</h3>
-              <p class="mashup"><cite>Hunt for the Wilderpeople</cite> <em>meets</em> <cite>Kate &amp; Leopold</cite></p>
-              <p class="card-logline">A foster kid accidentally summons a knight from out of time, and the two try to find a way to send him home.</p>
-            </div>
-            <div class="card-actions">
-              <a href="films.html" class="btn">Read</a>
-              <a href="films.html" class="btn btn-secondary">All scripts</a>
-            </div>
-          </div>
+          <a class="page-continue pdf-link" href="pdfs/chivalrys-not-dead-first-10.pdf" target="_blank" rel="noopener" data-title="Chivalry’s Not Dead, first 10 pages" tabindex="-1" aria-hidden="true">Keep reading</a>
         </article>
       </div>
     </section>
 
-    <section id="contact-section" class="contact-section">
-      <p class="kicker">Next issue&hellip;</p>
-      <h2>Say Hello</h2>
-      <p>Hiring for a cloud team, making something with a story in it, or just want to trade movie recs? I’d love to hear from you.</p>
-      <a href="mailto:halkotob@umich.edu" class="btn">halkotob@umich.edu</a>
-      <ul class="social-links">
-        <li><a href="https://www.linkedin.com/in/hemzaalkotob" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://github.com/halkotob" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://boxd.it/16jOV" target="_blank" rel="noopener">Letterboxd</a></li>
-        <li><a href="pdfs/hemza-alkotob-resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+    <section id="engineering" class="section engineering" aria-labelledby="engineering-heading">
+      <h2 id="engineering-heading" class="section-heading">Engineering</h2>
+      <div class="roles">
+        <article class="role">
+          <h3 class="role-title">Cloud engineer at Alfa Financial Software</h3>
+          <p class="role-when">Royal Oak, Michigan. June 2024 to now.</p>
+          <p>I keep the cloud side of Alfa’s financial systems running: 75+ AWS environments holding more than a million active contracts, at 99.9% availability. I built the internal platform that moved clients off self-hosting onto one standard AWS setup, and the JWT authorization that now guards our infrastructure tooling.</p>
+          <p>When production breaks, I run the root-cause analysis and write the recovery runbook, so it doesn’t break the same way twice.</p>
+        </article>
+        <article class="role">
+          <h3 class="role-title">Software engineer at Masjidal</h3>
+          <p class="role-when">Remote. September 2025 to now.</p>
+          <p>I built the company’s second hardware product from scratch: an ESP32 device that streams live audio. I wrote the C++ firmware and the AWS IoT backend, which gives every device its own certificate when it comes online.</p>
+        </article>
+      </div>
+      <aside class="engineering-side">
+        <p>Tools I reach for: Terraform, CloudFormation, Jenkins, AWS (IoT Core, Lambda, CloudWatch), Python and C++.</p>
+        <p><a class="text-link" href="pdfs/hemza-alkotob-resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></p>
+      </aside>
+    </section>
+
+    <section id="games" class="section games" aria-labelledby="games-heading">
+      <h2 id="games-heading" class="section-heading">Games</h2>
+      <article class="feature">
+        <a class="feature-media" href="https://halkotob.github.io/IslamDunk/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source srcset="images/projects/islamdunk-gameplay.jpg" media="(prefers-reduced-motion: reduce)">
+            <img src="images/projects/islamdunk-gameplay.webp" width="640" height="360" alt="" loading="lazy">
+          </picture>
+        </a>
+        <div class="feature-text">
+          <h3 class="feature-title">IslamDunk</h3>
+          <p class="role-when">2v2 arcade basketball, 2026. Browser and desktop.</p>
+          <p>Masjid-league teams, a career mode, online play with a friend, and mini games. It runs in the browser, phones included. I built it with JavaScript, Vite and Electron.</p>
+          <p class="actions">
+            <a class="button" href="https://halkotob.github.io/IslamDunk/" target="_blank" rel="noopener">Play IslamDunk</a>
+            <a class="text-link" href="https://github.com/halkotob/IslamDunk" target="_blank" rel="noopener">Source on GitHub</a>
+          </p>
+        </div>
+      </article>
+      <ul class="minor-list">
+        <li>
+          <h3 class="minor-title"><a href="https://github.com/halkotob/SuperPy" target="_blank" rel="noopener">SuperPy</a></h3>
+          <p>A side-scrolling Pygame shooter from 2023. Blast incoming comets with your hero’s laser.</p>
+        </li>
+        <li>
+          <h3 class="minor-title"><a href="https://github.com/halkotob/Wattos-Junkyard" target="_blank" rel="noopener">Watto’s Junkyard</a></h3>
+          <p>A <cite>Star Wars</cite> Mad Libs for the terminal, from 2023. Your words become a tour of Watto’s junk shop.</p>
+        </li>
+        <li>
+          <p class="minor-more"><a class="text-link" href="https://github.com/halkotob" target="_blank" rel="noopener">Everything else on GitHub</a></p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="about" class="section about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section-heading">About</h2>
+      <div class="prose">
+        <p>I’m a Muslim Syrian-American from Michigan. I studied computer science and film at the University of Michigan and graduated with a degree in each in 2024.</p>
+        <p>My scripts keep ending up in the same places: restaurant kitchens, wrestling rings, castles, basketball courts. I like characters who are hiding something and stories where the pieces click in the last act. Tracking down a production outage scratches the same itch.</p>
+        <p>I log every movie I watch on <a class="text-link" href="https://boxd.it/16jOV" target="_blank" rel="noopener">Letterboxd</a>.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-heading">Contact</h2>
+      <p class="contact-ask">Hiring for a cloud team, making something with a story in it, or want to trade movie recs? Email me.</p>
+      <p class="contact-email"><a href="mailto:halkotob@umich.edu">halkotob@umich.edu</a></p>
+      <ul class="profiles">
+        <li><a class="text-link" href="https://www.linkedin.com/in/hemzaalkotob" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="text-link" href="https://github.com/halkotob" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="text-link" href="https://boxd.it/16jOV" target="_blank" rel="noopener">Letterboxd</a></li>
       </ul>
     </section>
   </main>
 
-  <footer>
-    <p class="footer-line">Nothing matters until you know what matters.</p>
-    <p>© <span class="current-year">2026</span> Hemza Alkotob &middot; <a href="?intro" class="replay-link">Read the opening again</a></p>
+  <footer class="site-footer">
+    <p>© <span class="current-year">2026</span> Hemza Alkotob. Updated November 2026.</p>
   </footer>
+
+  <dialog id="pdf-dialog" class="pdf-dialog" aria-labelledby="pdf-dialog-title">
+    <div class="pdf-dialog-bar">
+      <h2 id="pdf-dialog-title" class="pdf-dialog-title"></h2>
+      <a id="pdf-dialog-newtab" class="text-link" href="" target="_blank" rel="noopener">Open in a new tab</a>
+      <button type="button" class="pdf-dialog-close">Close</button>
+    </div>
+    <iframe id="pdf-dialog-frame" title="Script" src="about:blank"></iframe>
+  </dialog>
 </body>
 </html>
